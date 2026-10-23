@@ -31,7 +31,7 @@ body {
 }
 
 .ip-wrap {
-    width: min(86.2%, 1660px);
+    width: min(80%, 1660px);
     max-width: none;
     margin-inline: auto
 }
@@ -87,7 +87,7 @@ body {
 }
 
 .ip-nav {
-    height: calc(48 * var(--ip-u));
+    height: calc(58 * var(--ip-u));
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -723,7 +723,7 @@ body {
     background: linear-gradient(135deg, #0861c9, #003778);
     box-shadow: 0 1px calc(8 * var(--ip-u)) #006bd844;
     color: #d8f2ff;
-    margin-bottom: calc(4 * var(--ip-u))
+    margin-bottom: calc(10 * var(--ip-u));
 }
 
 .ip-service-badge>svg {
@@ -774,15 +774,16 @@ body {
     line-height: 1.25;
     letter-spacing: 0;
     font-weight: 600;
-    margin-bottom: calc(5 * var(--ip-u));
+    margin-bottom: calc(10 * var(--ip-u));
+    margin-top: calc(10 * var(--ip-u));
     color: #e1edff
 }
 
 .ip-service-card p {
     font-size: calc(9 * var(--ip-u));
-    line-height: 1.2;
+    line-height: 20px;
     max-width: calc(175 * var(--ip-u));
-    margin-bottom: calc(3 * var(--ip-u))
+    margin-bottom: calc(10 * var(--ip-u))
 }
 
 .ip-service-card>svg {
@@ -1024,7 +1025,7 @@ body {
 
 .ip-review-heading .ip-eyebrow {
     font-size: calc(9 * var(--ip-u));
-    margin-bottom: calc(4 * var(--ip-u))
+    margin-bottom: calc(10 * var(--ip-u));
 }
 
 .ip-review-heading .ip-eyebrow>span {
@@ -1038,9 +1039,9 @@ body {
 
 .ip-review-heading h2 {
     font-size: calc(16 * var(--ip-u));
-    line-height: 1.2;
+    line-height: 20px;
     letter-spacing: -.3px;
-    margin-bottom: calc(4 * var(--ip-u))
+    margin-bottom: calc(10 * var(--ip-u));
 }
 
 .ip-review-heading p {
@@ -1096,16 +1097,16 @@ body {
 
 .ip-quote {
     position: absolute;
-    left: calc(8 * var(--ip-u));
-    top: calc(9 * var(--ip-u));
+    left: calc(14 * var(--ip-u));
+    top: calc(11 * var(--ip-u));
     background: linear-gradient(140deg, #074573, #002b51);
     color: #e4f5ff;
     font-size: calc(35 * var(--ip-u));
     font-family: Georgia, serif;
     border-radius: calc(6 * var(--ip-u));
-    line-height: 1;
-    width: calc(24 * var(--ip-u));
-    height: calc(27 * var(--ip-u));
+    line-height: 1.2;
+    width: 37px;
+    height: 37px;
     text-align: center;
     padding-top: 2px
 }
@@ -1127,8 +1128,8 @@ body {
 .ip-avatar {
     display: grid;
     place-items: center;
-    width: calc(24 * var(--ip-u));
-    height: calc(27 * var(--ip-u));
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     font-size: calc(8 * var(--ip-u));
     font-weight: 800;
@@ -1180,7 +1181,7 @@ body {
 
 .ip-pricing-heading .ip-eyebrow {
     font-size: calc(8 * var(--ip-u));
-    margin-bottom: calc(4 * var(--ip-u))
+    margin-bottom: calc(10 * var(--ip-u));
 }
 
 .ip-pricing-heading .ip-eyebrow>span {
@@ -1265,10 +1266,11 @@ body {
 
 .ip-price {
     font-size: calc(18 * var(--ip-u));
-    line-height: 1.2;
+    line-height: 20px;
     font-weight: 700;
     letter-spacing: -.5px;
-    margin-bottom: calc(4 * var(--ip-u))
+     margin-top: calc(10 * var(--ip-u));
+    margin-bottom: calc(10 * var(--ip-u));
 }
 
 .ip-price>span {
@@ -1292,7 +1294,7 @@ body {
     align-items: center;
     gap: calc(5 * var(--ip-u));
     font-size: calc(8 * var(--ip-u));
-    line-height: 1.1;
+    line-height: 20px;
     color: #aecde8
 }
 
@@ -1395,7 +1397,7 @@ body {
 
 .ip-final-cta .ip-eyebrow {
     font-size: calc(8 * var(--ip-u));
-    margin-bottom: calc(4 * var(--ip-u))
+    margin-bottom: calc(10 * var(--ip-u));
 }
 
 .ip-final-cta .ip-eyebrow>span {
@@ -2165,6 +2167,7 @@ body {
 
     .ip-plan h3 {
         font-size: 21px
+
     }
 
     .ip-plan>p {
@@ -2426,7 +2429,7 @@ body {
     }
 
     .ip-hero-content {
-        padding-top: calc(38 * var(--ip-u));
+        padding-top: calc(10 * var(--ip-u));
         min-height: calc(290 * var(--ip-u))
     }
 
@@ -2519,4 +2522,491 @@ body {
     .ip-footer-grid>div>h3+a {
         font-size: calc(9 * var(--ip-u))
     }
+}
+/* Layered flowing waves behind the About visual. */
+.ip-about {
+    position: relative;
+    isolation: isolate;
+}
+
+.ip-about::before,
+.ip-about::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    right: calc(-150 * var(--ip-u));
+    border-radius: 52% 0 0 0 / 72% 0 0 0;
+    transform: rotate(-16deg);
+}
+
+.ip-about::before {
+    width: calc(610 * var(--ip-u));
+    height: calc(300 * var(--ip-u));
+    bottom: calc(-174 * var(--ip-u));
+    border: 1px solid rgba(0, 117, 207, .40);
+    border-left-color: transparent;
+    border-top-color: transparent;
+    background: radial-gradient(ellipse at 74% 42%, rgba(0, 104, 193, .18), transparent 57%);
+}
+
+.ip-about::after {
+    width: calc(485 * var(--ip-u));
+    height: calc(225 * var(--ip-u));
+    right: calc(-94 * var(--ip-u));
+    bottom: calc(-125 * var(--ip-u));
+    border: 1px solid rgba(0, 139, 231, .32);
+    border-left-color: transparent;
+    border-top-color: transparent;
+    background: linear-gradient(145deg, transparent 52%, rgba(0, 90, 182, .14) 74%, transparent 75%);
+}
+
+.ip-about-grid {
+    position: relative;
+    z-index: 1;
+}
+
+.ip-about-visual::after {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .ip-about::before {
+        width: 590px;
+        height: 260px;
+        right: -380px;
+        bottom: -150px;
+    }
+
+    .ip-about::after {
+        width: 440px;
+        height: 190px;
+        right: -300px;
+        bottom: -115px;
+    }
+}
+/* Visible wave layer inside the About composition. */
+.ip-about-waves {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    inset: calc(-22 * var(--ip-u)) calc(-62 * var(--ip-u)) calc(-34 * var(--ip-u)) calc(8 * var(--ip-u));
+    overflow: hidden;
+}
+
+.ip-about-waves::before,
+.ip-about-waves::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: rotate(-23deg);
+}
+
+.ip-about-waves::before {
+    width: calc(500 * var(--ip-u));
+    height: calc(235 * var(--ip-u));
+    left: calc(10 * var(--ip-u));
+    top: calc(52 * var(--ip-u));
+    border: 1px solid rgba(0, 124, 218, .56);
+    border-left-color: transparent;
+    border-top-color: transparent;
+    background: radial-gradient(ellipse at 62% 55%, rgba(0, 106, 200, .20), transparent 60%);
+}
+
+.ip-about-waves::after {
+    width: calc(410 * var(--ip-u));
+    height: calc(170 * var(--ip-u));
+    left: calc(118 * var(--ip-u));
+    top: calc(87 * var(--ip-u));
+    border: 1px solid rgba(0, 160, 244, .46);
+    border-left-color: transparent;
+    border-top-color: transparent;
+    box-shadow: 0 0 calc(28 * var(--ip-u)) rgba(0, 119, 223, .15);
+}
+
+.ip-about-visual > .ip-office-image,
+.ip-about-visual > .ip-capabilities {
+    z-index: 1;
+}
+
+@media (max-width: 700px) {
+    .ip-about-waves {
+        right: -120px;
+        bottom: -24px;
+    }
+}
+/* SVG wave paths recreate the sweeping About-section shape from the reference. */
+.ip-about-waves {
+        left: -94px;
+    top: -35px;
+    rotate: transform(translate(189));
+    transform: rotate(12deg);
+  
+    bottom: calc(-24 * var(--ip-u));
+    overflow: visible;
+}
+
+.ip-about-waves::before,
+.ip-about-waves::after {
+    display: none;
+}
+
+.ip-about-waves svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.ip-wave-fill {
+    fill: url(#ip-about-wave-fill);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ip-wave-fill-flow 9s ease-in-out infinite alternate;
+}
+
+.ip-wave-line {
+    fill: none;
+    stroke: url(#ip-about-wave-stroke);
+    stroke-width: 1.25;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-dasharray: 8 10;
+    filter: drop-shadow(0 0 5px rgba(0, 159, 255, .30));
+    animation: ip-wave-line-flow 7s linear infinite;
+}
+
+.ip-wave-line-two {
+    opacity: .72;
+    animation-duration: 9s;
+    animation-direction: reverse;
+}
+
+.ip-wave-line-three {
+    opacity: .45;
+    animation-duration: 11s;
+}
+
+@keyframes ip-wave-fill-flow {
+    from { transform: translateX(-8px) translateY(4px) scaleY(.96); opacity: .62; }
+    to { transform: translateX(10px) translateY(-4px) scaleY(1.05); opacity: .94; }
+}
+
+@keyframes ip-wave-line-flow {
+    from { stroke-dashoffset: 0; transform: translateX(-5px); }
+    to { stroke-dashoffset: -72px; transform: translateX(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ip-wave-fill,
+    .ip-wave-line { animation: none; }
+}
+
+@media (max-width: 700px) {
+    .ip-about-waves {
+        left: -90px;
+        right: -210px;
+        top: 18px;
+        bottom: -35px;
+    }
+}
+/* Keep the flowing curves visible in the open space around the image and panel. */
+.ip-about-waves {
+    z-index: 2;
+    left: calc(-70 * var(--ip-u));
+    right: calc(-118 * var(--ip-u));
+    top: calc(-5 * var(--ip-u));
+    bottom: calc(-38 * var(--ip-u));
+}
+
+.ip-about-visual > .ip-office-image,
+.ip-about-visual > .ip-capabilities {
+    z-index: 3;
+}
+
+.ip-wave-fill {
+    opacity: .82;
+    animation-duration: 7s;
+}
+
+.ip-wave-line {
+    stroke-width: 2;
+    stroke-dasharray: none;
+    opacity: .94;
+    filter: drop-shadow(0 0 8px rgba(0, 172, 255, .54));
+    animation: ip-wave-sweep 6.5s ease-in-out infinite alternate;
+}
+
+.ip-wave-line-two {
+    opacity: .76;
+    animation-duration: 8.5s;
+}
+
+.ip-wave-line-three {
+    opacity: .58;
+    animation-duration: 10.5s;
+}
+
+@keyframes ip-wave-sweep {
+    from { transform: translateX(-12px) translateY(4px); }
+    to { transform: translateX(12px) translateY(-5px); }
+}
+/* Render the flowing About waves from the existing wave layer. */
+.ip-about-waves::before,
+.ip-about-waves::after {
+    display: block;
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    transform: rotate(-24deg);
+    transform-origin: center;
+}
+
+.ip-about-waves::before {
+    width: calc(600 * var(--ip-u));
+    height: calc(258 * var(--ip-u));
+    left: calc(-56 * var(--ip-u));
+    top: calc(30 * var(--ip-u));
+    border: 2px solid rgba(0, 151, 246, .74);
+    border-left-color: transparent;
+    border-top-color: transparent;
+    background: radial-gradient(ellipse at 69% 55%, rgba(0, 105, 211, .40), transparent 60%);
+    box-shadow: 0 0 calc(30 * var(--ip-u)) rgba(0, 127, 234, .18);
+    animation: ip-about-wave-drift-one 7s ease-in-out infinite alternate;
+}
+
+.ip-about-waves::after {
+    width: calc(510 * var(--ip-u));
+    height: calc(195 * var(--ip-u));
+    left: calc(70 * var(--ip-u));
+    top: calc(84 * var(--ip-u));
+    border: 1.5px solid rgba(0, 194, 255, .72);
+    border-left-color: transparent;
+    border-top-color: transparent;
+    background: linear-gradient(145deg, transparent 42%, rgba(0, 109, 221, .28) 67%, transparent 69%);
+    filter: drop-shadow(0 0 8px rgba(0, 183, 255, .42));
+    animation: ip-about-wave-drift-two 9s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes ip-about-wave-drift-one {
+    from { transform: rotate(-24deg) translate(-8px, 5px) scale(1, .96); }
+    to { transform: rotate(-24deg) translate(12px, -6px) scale(1.03, 1.06); }
+}
+
+@keyframes ip-about-wave-drift-two {
+    from { transform: rotate(-24deg) translate(10px, -4px) scale(.97); }
+    to { transform: rotate(-24deg) translate(-9px, 7px) scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ip-about-waves::before,
+    .ip-about-waves::after { animation: none; }
+}
+/* Keep the full wave form inside the About section instead of clipping its lower half. */
+.ip-about-waves {
+    left: calc(-34 * var(--ip-u));
+    right: calc(-64 * var(--ip-u));
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.ip-about-waves::before {
+    width: calc(500 * var(--ip-u));
+    height: calc(145 * var(--ip-u));
+    left: calc(-20 * var(--ip-u));
+    top: calc(39 * var(--ip-u));
+}
+
+.ip-about-waves::after {
+    width: calc(430 * var(--ip-u));
+    height: calc(108 * var(--ip-u));
+    left: calc(92 * var(--ip-u));
+    top: calc(80 * var(--ip-u));
+}
+
+@media (max-width: 700px) {
+    .ip-about-waves {
+        left: -48px;
+        right: -72px;
+    }
+}
+/* Three complete flowing ribbons keep the wave visible across the entire composition. */
+.ip-about-waves > i {
+    display: block;
+    position: absolute;
+    left: calc(-62 * var(--ip-u));
+    width: calc(650 * var(--ip-u));
+    height: calc(118 * var(--ip-u));
+    border-radius: 50%;
+    border: 2px solid rgba(0, 157, 244, .60);
+    border-left-color: transparent;
+    border-top-color: transparent;
+    background: linear-gradient(152deg, transparent 35%, rgba(0, 99, 205, .24) 56%, rgba(0, 177, 255, .10) 64%, transparent 72%);
+    transform: rotate(-13deg);
+    transform-origin: center;
+    filter: drop-shadow(0 0 8px rgba(0, 151, 242, .30));
+    animation: ip-about-ribbon-flow 8s ease-in-out infinite alternate;
+}
+
+.ip-about-waves > i:nth-child(1) {
+    top: calc(64 * var(--ip-u));
+}
+
+.ip-about-waves > i:nth-child(2) {
+    top: calc(104 * var(--ip-u));
+    left: calc(12 * var(--ip-u));
+    width: calc(570 * var(--ip-u));
+    opacity: .72;
+    animation-delay: -2.5s;
+    animation-duration: 9.5s;
+}
+
+.ip-about-waves > i:nth-child(3) {
+    top: calc(140 * var(--ip-u));
+    left: calc(96 * var(--ip-u));
+    width: calc(470 * var(--ip-u));
+    opacity: .48;
+    animation-delay: -4s;
+    animation-duration: 11s;
+}
+
+@keyframes ip-about-ribbon-flow {
+    from { transform: rotate(-13deg) translateX(-15px) translateY(5px) scaleX(.97); }
+    to { transform: rotate(-13deg) translateX(15px) translateY(-6px) scaleX(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ip-about-waves > i { animation: none; }
+}
+/* Readability and vertical rhythm pass. */
+@media (min-width: 701px) {
+    .ip-about { padding-block: calc(30 * var(--ip-u)); }
+    .ip-services { padding-block: calc(28 * var(--ip-u)); }
+    .ip-why { padding-block: calc(27 * var(--ip-u)); }
+    .ip-testimonials,
+    .ip-pricing { padding-block: calc(25 * var(--ip-u)); }
+    .ip-cta-section { padding-block: calc(14 * var(--ip-u)); }
+    .ip-footer { padding-top: calc(27 * var(--ip-u)); }
+
+    .ip-about-copy p,
+    .ip-why p { font-size: calc(11.2 * var(--ip-u)); line-height: 1.55; }
+    .ip-services-heading > p,
+    .ip-review-heading p,
+    .ip-pricing-heading p,
+    .ip-final-cta p { font-size: calc(9.5 * var(--ip-u)); line-height: 1.55; }
+
+    .ip-service-card {
+        min-height: calc(122 * var(--ip-u));
+        padding: calc(12 * var(--ip-u)) calc(14 * var(--ip-u));
+    }
+    .ip-service-card:nth-child(n+5) { min-height: calc(122 * var(--ip-u)); }
+    .ip-service-card h3 { font-size: calc(12 * var(--ip-u)); margin-bottom: calc(6 * var(--ip-u)); }
+    .ip-service-card p { font-size: calc(10 * var(--ip-u)); line-height: 1.42; }
+
+    .ip-why li { font-size: calc(10 * var(--ip-u)); line-height: 1.35; }
+    .ip-why ul { gap: calc(6 * var(--ip-u)); margin-block: calc(12 * var(--ip-u)); }
+    .ip-result-card { padding: calc(13 * var(--ip-u)) calc(16 * var(--ip-u)); }
+    .ip-result-card span { font-size: calc(9 * var(--ip-u)); }
+
+    .ip-review-heading h2,
+    .ip-pricing-heading h2 { font-size: calc(18 * var(--ip-u)); }
+    .ip-review { min-height: calc(160 * var(--ip-u)); padding: calc(41 * var(--ip-u)) calc(15 * var(--ip-u)) calc(13 * var(--ip-u)) calc(43 * var(--ip-u)); }
+    .ip-review blockquote { font-size: calc(9.5 * var(--ip-u)); line-height: 1.5; }
+    .ip-review figcaption strong { font-size: calc(9 * var(--ip-u)); }
+    .ip-review figcaption span:not(.ip-avatar) { font-size: calc(8 * var(--ip-u)); }
+
+    .ip-plan { padding: calc(14 * var(--ip-u)) calc(18 * var(--ip-u)) calc(13 * var(--ip-u)); }
+    .ip-plan h3 { font-size: calc(14 * var(--ip-u));
+    margin-bottom: calc(10 * var(--ip-u));
+margin-top: calc(10 * var(--ip-u)); }
+    .ip-plan > p,
+    .ip-plan li { font-size: calc(9.5 * var(--ip-u)); line-height: 20px; }
+    .ip-plan ul { gap: calc(5 * var(--ip-u)); margin-bottom: calc(12 * var(--ip-u)); }
+    .ip-plan > .ip-outline,
+    .ip-plan > .ip-button { min-height: calc(28 * var(--ip-u)); font-size: calc(10 * var(--ip-u)); }
+
+    .ip-final-cta { padding: calc(18 * var(--ip-u)) calc(24 * var(--ip-u)); }
+    .ip-footer-grid { padding-bottom: calc(24 * var(--ip-u)); }
+    .ip-footer-grid h3 { font-size: calc(10 * var(--ip-u)); }
+    .ip-footer-grid > div > p,
+    .ip-footer-grid > div > a:not(:first-child),
+    .ip-footer-grid > div > h3 + a,
+    .ip-footer-grid > div:last-child > a,
+    .ip-footer-grid > div > .ip-location { font-size: calc(9 * var(--ip-u)); line-height: 1.65; }
+}
+
+@media (max-width: 700px) {
+    .ip-about,
+    .ip-services,
+    .ip-why,
+    .ip-testimonials,
+    .ip-pricing { padding-block: 34px; }
+    .ip-service-card,
+    .ip-service-card:nth-child(n+5) { padding: 17px 16px; }
+    .ip-review { padding-top: 24px; padding-bottom: 20px; }
+    .ip-plan { padding-top: 24px; padding-bottom: 21px; }
+    .ip-footer { padding-top: 34px; }
+}
+/* Position the animated wave ribbons on the left side of the office image. */
+.ip-about-waves {
+    /* left: calc(-210 * var(--ip-u)); */
+    right: auto;
+    width: calc(430 * var(--ip-u));
+    top: 0;
+    bottom: 0;
+    overflow: visible;
+}
+
+.ip-about-waves::before,
+.ip-about-waves::after {
+    display: none;
+}
+
+.ip-about-waves > i {
+    left: 0;
+    width: calc(500 * var(--ip-u));
+    transform: rotate(13deg) scaleX(-1);
+    animation-name: ip-about-ribbon-flow-left;
+}
+
+.ip-about-waves > i:nth-child(1) {
+    top: calc(54 * var(--ip-u));
+}
+
+.ip-about-waves > i:nth-child(2) {
+    left: calc(-28 * var(--ip-u));
+    top: calc(95 * var(--ip-u));
+    width: calc(450 * var(--ip-u));
+}
+
+.ip-about-waves > i:nth-child(3) {
+    left: calc(-52 * var(--ip-u));
+    top: calc(132 * var(--ip-u));
+    width: calc(390 * var(--ip-u));
+}
+
+@keyframes ip-about-ribbon-flow-left {
+    from { transform: rotate(13deg) scaleX(-1) translateX(-14px) translateY(5px); }
+    to { transform: rotate(13deg) scaleX(-1) translateX(14px) translateY(-6px); }
+}
+
+@media (max-width: 700px) {
+    .ip-about-waves {
+        left: -125px;
+        width: 360px;
+    }
+}
+/* Consistent top spacing for every main homepage content section. */
+.ip-about,
+.ip-services,
+.ip-why,
+.ip-testimonials,
+.ip-pricing,
+.ip-cta-section {
+    padding-top: 96px;
+}
+.ip-hero {
+    padding-top: 64px;
+    padding-bottom: 96px;
 }
