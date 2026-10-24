@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "./redesign.css";
-import "./future-tech.css";
-import "./homepage.css";
 import "./internal.css";
+import "./light-theme.css";
 import { Header, Footer } from "./components/site";
 export const metadata: Metadata = {
+  icons: { icon: "/icon.svg" },
   title: {
-    default: "Ispier - Next Gen SaaS Tools That Boost Your Marketing & Sales",
+    default: "Ispier | Digital Marketing Agency - Strategy. Creativity. Growth.",
     template: "%s | Ispier",
   },
   description:

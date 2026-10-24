@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { DesignHeader, DesignFooter } from "./home-design";
+import { LightHeader, LightFooter } from "./light-site";
+import { LightIcon } from "./light-home";
 import { services } from "../content";
 export { services } from "../content";
 
@@ -41,12 +42,13 @@ export function Logo() {
   );
 }
 export function Header() {
-  return <DesignHeader />;
+  return <LightHeader />;
 }
 export function Footer() {
-  return <DesignFooter />;
+  return <LightFooter />;
 }
 export function ServiceIcon({ id }: { id: string }) {
+  if (["ppc", "content", "email"].includes(id)) return <LightIcon name={id} />;
   return (
     <svg
       viewBox="0 0 24 24"

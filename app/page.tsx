@@ -1,2 +1,2 @@
-import DesignHome from './components/home-design';
-export default function Home() { return <DesignHome/>; }
+import LightHome from "./components/light-home";
+export default function Home() { return <LightHome />; }
