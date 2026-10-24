@@ -808,16 +808,16 @@ export function DesignFooter() {
           </Link>
           <p>Authentic Marketing. Sustainable Growth.</p>
           <div className="ip-socials">
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               in
             </a>
-            <a href="https://x.com/" aria-label="X">
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
               𝕏
             </a>
-            <a href="https://www.instagram.com/" aria-label="Instagram">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <Icon name="instagram" />
             </a>
-            <a href="https://www.youtube.com/" aria-label="YouTube">
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
               <Icon name="play" />
             </a>
           </div>
