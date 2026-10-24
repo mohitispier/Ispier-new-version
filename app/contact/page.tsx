@@ -1,40 +1,9 @@
-﻿import type { Metadata } from "next";
-import { ContactForm, PageIntro, Arrow } from "../components/site";
+import type { Metadata } from "next";
+import { ContactForm, Arrow } from "../components/site";
+import { InnerPage, InnerHero } from "../components/inner-page";
 import { company } from "../content";
 export const metadata: Metadata = { title: "Contact us" };
 export default function Contact() {
-  return (
-    <>
-      <PageIntro
-        label="CONTACT US"
-        title="Let’s Grow Your Brand"
-        accent="the Right Way"
-        description="Your audience is already out there, talking and looking for solutions. Let’s make sure they find you."
-      />
-      <section className="container contact-grid">
-        <div className="contact-info">
-          <span className="eyebrow">ISPIER TECH PVT LTD</span>
-          <h2>Get in Touch</h2>
-          <p>
-            Ready to build trust, increase visibility and grow your business
-            through authentic digital marketing? Reach out to Ispier Tech Pvt
-            Ltd today.
-          </p>
-          <a href={"mailto:" + company.email} className="contact-email">
-            {company.email}
-            <Arrow diagonal />
-          </a>
-          <div className="original-contact-detail">
-            <span>CALL US</span>
-            <a href="tel:+919876543210">{company.phone}</a>
-          </div>
-          <div className="original-contact-detail">
-            <span>OUR OFFICE</span>
-            <p>{company.office}</p>
-          </div>
-        </div>
-        <ContactForm />
-      </section>
-    </>
-  );
+ return <InnerPage active="/contact"><InnerHero centered label="Let's talk" title="Your next chapter" accent="starts here." description="Tell us what you are building, where you want to go and what is getting in the way. We will take it from there." />
+ <section className="in-wrap in-contact-grid"><div className="in-contact-copy"><span className="in-kicker"><i />A real conversation</span><h2>Good things start<br />with a hello.</h2><p>Ready to build trust, increase visibility and grow your business through authentic digital marketing? Let&apos;s find the right way forward.</p><div className="in-contact-details"><a href={"mailto:"+company.email}><span className="in-contact-symbol">@</span><div><span>Email us</span><strong>{company.email}</strong></div><Arrow diagonal /></a><a href="tel:+919876543210"><span className="in-contact-symbol">&#9742;</span><div><span>Call us</span><strong>{company.phone}</strong></div><Arrow diagonal /></a><div><span className="in-contact-symbol">&#9678;</span><div><span>Our office</span><strong>{company.office}</strong></div></div></div><div className="in-next"><h3>What happens next?</h3><ol><li><span>01</span>Share your goals and challenges.</li><li><span>02</span>We discuss your audience and priorities.</li><li><span>03</span>Build a clear plan for the way forward.</li></ol></div></div><div className="in-contact-form"><div className="in-form-heading"><span className="in-kicker"><i />Tell us about your project</span><h2>Let&apos;s build something meaningful.</h2><p>A few details help us understand what you need.</p></div><ContactForm /></div></section></InnerPage>;
 }

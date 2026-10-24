@@ -1,60 +1,13 @@
-﻿import Image from "next/image";
+import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import { CTA, PageIntro } from "../components/site";
-import { company, aboutPoints, strengths } from "../content";
+import { InnerPage, InnerHero, InnerHeading, InnerCTA } from "../components/inner-page";
+import { Arrow, ServiceIcon } from "../components/site";
+import { company, aboutPoints, strengths, stats } from "../content";
 export const metadata: Metadata = { title: "About us" };
 export default function About() {
-  return (
-    <>
-      <PageIntro
-        label="WHO WE ARE"
-        title="Reduce Risk & Make Your"
-        accent="Workflow More Productive"
-        description={company.aboutText}
-      />
-      <section className="container about-story">
-        <div className="about-photo">
-          <Image
-            src="/images/hero-marketing.jpg"
-            alt="A collaborative business discussion"
-            fill
-            sizes="(max-width:750px) 90vw,45vw"
-          />
-          <span>
-            10+
-            <br />
-            Years of Combined Expertise
-          </span>
-        </div>
-        <div className="story-copy">
-          <span className="eyebrow">ISPIER TECH PVT LTD</span>
-          <h2>
-            Natural brand positioning.
-            <br />
-            <span className="serif">Real online communities.</span>
-          </h2>
-          <ul className="original-about-points">
-            {aboutPoints.map((point) => (
-              <li key={point}>
-                <span>✓</span>
-                {point}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-      <section className="container section">
-        <div className="principles">
-          {strengths.map((s, i) => (
-            <article key={s.title}>
-              <span className="eyebrow">0{i + 1} /</span>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <CTA />
-    </>
-  );
+ return <InnerPage active="/about"><InnerHero label="About Ispier" title="Your growth partner" accent="in the digital world." description={company.aboutText}><div className="in-office"><Image src="/images/ispier-office-reference.png" alt="Ispier office with a meeting table and plants" fill sizes="(max-width: 760px) 90vw, 44vw" /><div className="in-office-caption"><span className="in-live-dot" />Human ideas. Lasting impact.</div></div></InnerHero>
+ <section className="in-wrap in-stat-strip" aria-label="Ispier in numbers">{stats.map(stat=><div key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}<div><strong>Trust first.</strong><span>At every stage of your growth</span></div></section>
+ <section className="in-wrap in-section in-story"><InnerHeading label="The way we see it" title="Good marketing feels like a helpful conversation." text="Your brand belongs where your audience already is. We help you show up with something valuable to say." /><div className="in-story-copy"><p>We are Ispier Tech Pvt Ltd. Our work brings together community marketing, content, search and thoughtful digital experiences to build a reputation that lasts.</p><ul className="in-check-list">{aboutPoints.map(point=><li key={point}><span aria-hidden="true">&#10003;</span>{point}</li>)}</ul><Link href="/approach" className="in-text-link">Meet our approach <Arrow /></Link></div></section>
+ <section className="in-wrap in-section"><InnerHeading label="What guides us" title="A clear purpose behind every move." /><div className="in-principles">{strengths.map((item,i)=><article className="in-panel" key={item.title}><span className="in-icon"><ServiceIcon id={["seo","social","brand"][i]} /></span><span className="in-card-number">0{i+1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></section><InnerCTA /></InnerPage>;
 }

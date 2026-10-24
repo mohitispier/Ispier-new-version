@@ -3,6 +3,7 @@ import "./globals.css";
 import "./redesign.css";
 import "./future-tech.css";
 import "./homepage.css";
+import "./internal.css";
 import { Header, Footer } from "./components/site";
 export const metadata: Metadata = {
   title: {

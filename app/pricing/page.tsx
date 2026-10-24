@@ -1,19 +1,12 @@
-﻿import type { Metadata } from "next";
-import { PageIntro } from "../components/site";
-import { PricingCards } from "../components/pricing";
+import Link from "next/link";
+import type { Metadata } from "next";
+import { InnerPage, InnerHero, InnerHeading, InnerCTA } from "../components/inner-page";
+import { Arrow } from "../components/site";
+import { plans } from "../content";
 export const metadata: Metadata = { title: "Pricing" };
+const questions = [{q:"Which plan is right for my business?",a:"Starter suits businesses building their first consistent presence. Growth adds more platforms and campaign activity. Enterprise is tailored to a broader scope. Talk to us about your goals before choosing."},{q:"What does the monthly price include?",a:"Each plan lists its included channels, campaign scope, reporting and support. We will confirm the scope with you before work begins."},{q:"Can I discuss a custom combination of services?",a:"Yes. If your priorities do not fit a listed plan, contact us to discuss a combination of services for your business."},{q:"How will I see what is working?",a:"Reporting is included in every plan. The frequency and detail depend on the plan, from monthly reports to custom reporting for Enterprise."}];
 export default function Pricing() {
-  return (
-    <>
-      <PageIntro
-        label="PRICING"
-        title="Transparent Plans for"
-        accent="Every Business"
-        description="No hidden fees. No surprises. Just clear value that grows with your business."
-      />
-      <section className="container original-pricing">
-        <PricingCards />
-      </section>
-    </>
-  );
+ return <InnerPage active="/pricing"><InnerHero centered label="Simple, transparent pricing" title="Big ambitions." accent="A plan to match." description="Choose the support that fits your stage. Clear scope, thoughtful strategy and room to grow." />
+ <section className="in-wrap in-pricing-section"><div className="in-pricing-note"><span className="in-live-dot" />Monthly plans. A long-term approach.</div><div className="in-price-grid">{plans.map(plan=><article key={plan.name} className={"in-panel in-price-card"+(plan.highlighted?" in-price-featured":"")}>{plan.highlighted&&<span className="in-popular">Most popular</span>}<span className="in-service-tag">{plan.name==="Starter"?"Build your foundation":plan.name==="Growth"?"Take the next step":"Your goals. Your scope."}</span><h2>{plan.name}</h2><p>{plan.description}</p><div className="in-plan-price">{plan.price}<span>{plan.period}</span></div><Link className={plan.highlighted?"in-button":"in-button in-button-outline"} href={"/contact?plan="+plan.name.toLowerCase()}>{plan.name==="Enterprise"?"Talk to our team":"Get started"}<Arrow /></Link><span className="in-plan-includes">What&apos;s included</span><ul className="in-check-list">{plan.features.map(feature=><li key={feature}><span aria-hidden="true">&#10003;</span>{feature}</li>)}</ul></article>)}</div></section>
+ <section className="in-wrap in-section in-faq-grid"><InnerHeading label="A little more clarity" title="Before you get started." text="Have a question about your goals or the right scope? We are happy to talk it through." /><div className="in-faq">{questions.map(item=><details key={item.q}><summary>{item.q}<span aria-hidden="true">+</span></summary><p>{item.a}</p></details>)}</div></section><InnerCTA /></InnerPage>;
 }

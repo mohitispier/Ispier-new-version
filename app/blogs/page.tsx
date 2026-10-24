@@ -1,5 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
+import { InnerPage, InnerHero, InnerCTA } from "../components/inner-page";
+import { Arrow } from "../components/site";
 export const metadata: Metadata = { title: "Brand Growth Insights" };
 const articles = [
   {
@@ -21,22 +24,11 @@ const articles = [
     label: "Explore search strategy",
   },
 ];
+
+const categories = ["Community marketing", "Brand reputation", "Search & visibility"];
+const images = ["/images/creative-meeting.jpg", "/images/strategy.jpg", "/images/analytics.jpg"];
 export default function Blogs() {
-  return (
-    <div className="ip-home">
-      <div className="ip-wrap ip-insights">
-        <div className="ip-eyebrow">Ispier Insights</div>
-        <h1>Ideas for stronger brands.</h1>
-        <div className="ip-insight-list">
-          {articles.map((article) => (
-            <article key={article.title}>
-              <h2>{article.title}</h2>
-              <p>{article.text}</p>
-              <Link href={article.href}>{article.label} →</Link>
-            </article>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+ return <InnerPage active="/blogs"><InnerHero centered label="Ispier insights" title="Fresh perspectives." accent="Stronger brands." description="Practical thinking on the conversations, content and digital experiences that help your business grow." />
+ <section className="in-wrap in-insights-section"><article className="in-featured-insight"><div className="in-featured-photo"><Image src={images[0]} alt="A team discussing ideas together" fill sizes="(max-width:760px) 90vw, 50vw" /></div><div className="in-featured-copy"><span className="in-kicker"><i />Featured perspective</span><span className="in-service-tag">{categories[0]}</span><h2>{articles[0].title}</h2><p>{articles[0].text.slice(0,articles[0].text.indexOf("On Reddit"))}</p><a href="#insight-1" className="in-text-link">Read the perspective <Arrow /></a></div></article>
+ <div className="in-editorial-title"><h2>Ideas worth exploring.</h2><span>From the Ispier team</span></div><div className="in-articles">{articles.map((article,i)=><article className="in-panel in-article" key={article.title} id={"insight-"+(i+1)}><div className="in-article-photo"><Image src={images[i]} alt={["A collaborative team workshop","Brand strategy planning","Digital performance analytics"][i]} fill sizes="(max-width:760px) 90vw, 30vw" /></div><div className="in-article-body"><span className="in-service-tag">{categories[i]}</span><h2>{article.title}</h2><p>{article.text}</p><Link className="in-text-link" href={article.href}>{article.label}<Arrow /></Link></div></article>)}</div></section><InnerCTA /></InnerPage>;
 }
