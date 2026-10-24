@@ -275,6 +275,27 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+function OrbitArt({ variant = "about" }: { variant?: "about" | "results" }) {
+  const id = "ip-orbit-" + variant;
+  return <svg className="ip-orbit-art" viewBox="0 0 640 340" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id={id} x1="50" y1="240" x2="580" y2="100" gradientUnits="userSpaceOnUse"><stop stopColor="#0066ff"/><stop offset=".32" stopColor="#00d9ff"/><stop offset=".58" stopColor="#0058ff"/><stop offset=".83" stopColor="#00c8ff"/><stop offset="1" stopColor="#0051e8"/></linearGradient>
+      <radialGradient id={id + "-aura"}><stop stopColor="#006aff" stopOpacity=".42"/><stop offset="1" stopColor="#006aff" stopOpacity="0"/></radialGradient>
+      <filter id={id + "-glow"} x="-70%" y="-100%" width="240%" height="300%"><feGaussianBlur stdDeviation="5"/></filter>
+      <filter id={id + "-star"} x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3"/></filter>
+    </defs>
+    <ellipse cx="330" cy="210" rx="290" ry="120" fill={"url(#" + id + "-aura)"}/>
+    <g stroke={"url(#" + id + ")"}>
+      <ellipse cx="325" cy="205" rx="275" ry="71" transform="rotate(-12 325 205)" strokeWidth="7" opacity=".8" filter={"url(#" + id + "-glow)"}/>
+      <ellipse cx="325" cy="205" rx="275" ry="71" transform="rotate(-12 325 205)" strokeWidth="1.7"/>
+      <ellipse cx="335" cy="207" rx="264" ry="65" transform="rotate(16 335 207)" strokeWidth="5" opacity=".65" filter={"url(#" + id + "-glow)"}/>
+      <ellipse cx="335" cy="207" rx="264" ry="65" transform="rotate(16 335 207)" strokeWidth="1.1"/>
+      <path d="M90 230C155 320 485 310 583 202M112 245C221 332 515 297 578 222" opacity=".5"/>
+    </g>
+    {[[76,205],[164,130],[556,176],[483,273],[252,286]].map(([x,y],i)=><g key={i}><circle cx={x} cy={y} r="10" fill="#008cff" filter={"url(#"+id+"-star)"}/><path d={`M${x-9} ${y}h18M${x} ${y-9}v18`} stroke="#00c8ff" strokeWidth="1"/><circle cx={x} cy={y} r="2.5" fill="#c6ffff"/></g>)}
+  </svg>;
+}
+
 function GrowthLine() {
   return (
     <svg
@@ -321,20 +342,12 @@ export default function DesignHome() {
           />
         </div>
         <div className="ip-wrap ip-hero-content">
-          <span className="ip-pill">Next Gen SaaS Marketing Tools</span>
+          <span className="ip-pill">Your Brand. Our Strategy.</span>
           <h1 id="ip-title">
-            Boost Your
-            <br />
-            <span>
-              Marketing &amp; Sales
-              <br />
-              Naturally
-            </span>
+            Boost Your Brand<br />Visibility &amp; Online<br /><span>Reputation</span>
           </h1>
           <p>
-            Ispier integrates your brand into real online conversations &mdash;
-            Reddit, Quora, Wikipedia and beyond. We build trust, not just
-            traffic, for sustainable long-term growth.
+            We help businesses build a strong online presence through strategic marketing, content, and digital platforms &mdash; so you get noticed, trusted and chosen.
           </p>
           <div className="ip-hero-buttons">
             <Link className="ip-button" href="/contact">
@@ -348,16 +361,16 @@ export default function DesignHome() {
               <span>
                 <Icon name="play" />
               </span>
-              How We Work
+              Watch Overview
             </button>
           </div>
         </div>
         <div className="ip-wrap ip-proof">
           {[
-            ["people", "500+", "Brands Scaled"],
+            ["people", "Trusted by 500+", "Global Brands"],
             ["star", "98%", "Client Retention"],
             ["chart", "10x", "Average ROI"],
-            ["process", "+320%", "Organic Traffic"],
+            ["process", "100%", "Transparent Process"],
           ].map(([icon, a, b]) => (
             <div key={icon}>
               <span className="ip-proof-icon">
@@ -372,27 +385,14 @@ export default function DesignHome() {
           ))}
         </div>
       </section>
-      <section className="ip-brand-band" aria-label="Trusted platforms">
-        <div className="ip-wrap">
-          <p>Trusted platforms we work with</p>
-          <div className="ip-brands">
-            <span>Reddit</span>
-            <span>Quora</span>
-            <span>Wikipedia</span>
-            <span>Google</span>
-            <span>LinkedIn</span>
-            <span>Twitter</span>
-          </div>
-        </div>
-      </section>
       <section className="ip-section ip-about">
         <div className="ip-wrap ip-about-grid">
           <div className="ip-about-copy">
-            <Eyebrow>Who We Are</Eyebrow>
+            <Eyebrow>About Ispier</Eyebrow>
             <h2>
-              Reduce Risk &amp; Make Your
+              Your Growth Partner
               <br />
-              Workflow <em>More Productive</em>
+              in the <em>Digital World</em>
             </h2>
             <p>
               At Ispier Tech Pvt Ltd, digital marketing never feels forced or
@@ -405,7 +405,7 @@ export default function DesignHome() {
               sustainable growth.
             </p>
             <Link className="ip-outline" href="/about">
-              Learn More About Us <Icon name="arrow" />
+              Learn More <Icon name="arrow" />
             </Link>
           </div>
           <div className="ip-about-visual">
@@ -447,9 +447,9 @@ export default function DesignHome() {
             <div>
               <Eyebrow>Our Services</Eyebrow>
               <h2>
-                Complete and Effective Services
+                Powerful Digital Solutions
                 <br />
-                for <em>Your Business Growth</em>
+                for <em>Your Brand</em>
               </h2>
             </div>
             <p>
@@ -490,20 +490,20 @@ export default function DesignHome() {
                 </span>
                 <h3>{service.name}</h3>
                 <p>{service.text}</p>
-                <Icon name="arrow" />
+                <span className="ip-learn">Learn More <Icon name="arrow" /></span>
               </Link>
             ))}
           </div>
         </div>
       </section>
       <section className="ip-section ip-why">
-        <div className="ip-wrap ip-why-grid">
-          <div>
+        <div className="ip-wrap ip-why-grid"><div className="ip-results-orbit" aria-hidden="true"><OrbitArt variant="results" /></div>
+          <div className="ip-why-copy">
             <Eyebrow>Why Choose Ispier</Eyebrow>
             <h2>
-              A Different Kind of
+              Built on Trust.
               <br />
-              <em>Marketing Agency</em>
+              Driven by <em>Results.</em>
             </h2>
             <p>
               We do not chase vanity metrics. We build brands that people
@@ -511,10 +511,10 @@ export default function DesignHome() {
             </p>
             <ul>
               {[
-                "No Forced Marketing",
-                "Long-Term Strategy",
-                "Deep Platform Expertise",
-                "Measurable Results",
+                "Authentic & Ethical Marketing",
+                "Experienced Team of Digital Experts",
+                "Transparent Process & Regular Updates",
+                "Long-Term Growth Focus",
               ].map((item) => (
                 <li key={item}>
                   <span>
@@ -531,22 +531,22 @@ export default function DesignHome() {
           <div className="ip-results">
             <div className="ip-result-card">
               <div>
-                <strong>+240%</strong>
-                <span>Reddit Growth</span>
+                <strong>+250%</strong>
+                <span>Brand Visibility</span>
               </div>
               <GrowthLine />
             </div>
             <div className="ip-result-card">
               <div>
-                <strong>+180%</strong>
-                <span>Quora Reach</span>
+                <strong>98%</strong>
+                <span>Client Retention</span>
               </div>
               <i className="ip-donut" />
             </div>
             <div className="ip-result-card">
               <div>
-                <strong>+320%</strong>
-                <span>Organic Traffic</span>
+                <strong>10x</strong>
+                <span>Average ROI</span>
               </div>
               <i className="ip-bars">
                 <b />
@@ -555,25 +555,7 @@ export default function DesignHome() {
               </i>
             </div>
           </div>
-          <div className="ip-real">
-            <p>
-              Trust First.
-              <br />
-              Grow Naturally.
-              <br />
-              <em>Scale Sustainably.</em>
-            </p>
-            <button
-              className="ip-story"
-              type="button"
-              onClick={() => setOverview(true)}
-            >
-              <span>
-                <Icon name="play" />
-              </span>
-              How We Work
-            </button>
-          </div>
+          <div className="ip-real"><span className="ip-phone-camera" aria-hidden="true" /><DesignLogo /><div className="ip-phone-chart"><span className="ip-phone-label">Brand performance</span><strong>+250%</strong><GrowthLine /><span className="ip-phone-trend">Growing with trust</span></div><p>Real People.<br />Real Brands.<br /><em>Real Results.</em></p></div>
         </div>
       </section>
       <section className="ip-section ip-testimonials">
@@ -581,7 +563,7 @@ export default function DesignHome() {
           <div className="ip-review-heading">
             <div>
               <Eyebrow>What Our Clients Say</Eyebrow>
-              <h2>What Our Clients Say</h2>
+              <h2>Trusted by Businesses Worldwide</h2>
               <p>
                 Real results from brands growing through authentic digital
                 marketing.
@@ -629,8 +611,8 @@ export default function DesignHome() {
         <div className="ip-wrap">
           <div className="ip-pricing-heading">
             <div>
-              <Eyebrow>Pricing</Eyebrow>
-              <h2>Transparent Plans for Every Business</h2>
+              <Eyebrow>Pricing Plans</Eyebrow>
+              <h2>Flexible Plans for Every Stage</h2>
               <p>
                 No hidden fees. No surprises. Just clear value that grows with
                 your business.

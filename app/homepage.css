@@ -830,7 +830,7 @@ body {
     align-items: center
 }
 
-.ip-why-grid>div:first-child {
+.ip-why-grid>.ip-why-copy {
     padding-right: calc(45 * var(--ip-u))
 }
 
@@ -1956,7 +1956,7 @@ body {
         gap: 22px 5px
     }
 
-    .ip-why-grid>div:first-child {
+    .ip-why-grid>.ip-why-copy {
         grid-column: 1/-1;
         max-width: none;
         padding: 0
@@ -2481,7 +2481,7 @@ body {
         grid-template-columns: 42% 33% 25%
     }
 
-    .ip-why-grid>div:first-child {
+    .ip-why-grid>.ip-why-copy {
         max-width: 600px;
         padding-right: 48px
     }
@@ -3009,4 +3009,63 @@ margin-top: calc(10 * var(--ip-u)); }
 .ip-hero {
     padding-top: 64px;
     padding-bottom: 96px;
+}/* Reference artwork refinements. Section and content spacing remain unchanged. */
+.ip-hero h1 { color: #f5f7ff; text-shadow: 0 2px 20px #0004; }
+.ip-hero:before { background: linear-gradient(90deg,#000d1caa, #000d1c44 35%,transparent 55%),linear-gradient(0deg,#000d1c 0%,#000d1cdd 12%,transparent 40%); }
+.ip-header { backdrop-filter: blur(18px); }
+.ip-why::before,.ip-why::after { display: none; }
+.ip-home .ip-orbit-art { display: block; width: 100%; height: 100%; overflow: visible; }
+.ip-why-grid > .ip-results-orbit { position: absolute; inset: -16% -4% -14% 40%; max-width: none; padding: 0; pointer-events: none; z-index: 0; }
+.ip-why-grid > div:not(.ip-results-orbit) { position: relative; z-index: 1; }
+.ip-results .ip-result-card { background: linear-gradient(120deg,#00356cdd,#00142eee 65%); border-color: #0879c188; box-shadow: 0 8px 20px #0006,inset 0 1px 0 #3eabff22,0 0 15px #007bff15; backdrop-filter: blur(10px); }
+.ip-results .ip-result-card strong { color:#f1f8ff; font-weight: 800; }
+.ip-results .ip-result-card:nth-child(1) { transform: perspective(800px) rotateY(-9deg) rotateZ(-2deg); }
+.ip-results .ip-result-card:nth-child(2) { transform: perspective(800px) rotateY(-9deg); }
+.ip-results .ip-result-card:nth-child(3) { transform: perspective(800px) rotateY(-9deg) rotateZ(2deg); }
+.ip-real { align-self: center; justify-self: end; width: clamp(150px, 13vw, 210px); max-width: 100%; height: clamp(280px, 24vw, 380px); aspect-ratio: 1 / 2; min-height: 0; padding: calc(19 * var(--ip-u)); border: 1px solid #28a4d4; border-radius: calc(19 * var(--ip-u)); background: linear-gradient(135deg,#052544,#000b19 55%,#00294b); transform: perspective(800px) rotateY(-20deg) rotateZ(4deg); box-shadow: 7px 5px 0 #000711,8px 5px 0 1px #06436b,-8px 0 25px #008aff33,inset 0 0 0 5px #000b18; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+.ip-real::before { content:''; position: absolute; width: 160%; height: 90%; left:-35%; top:38%; border-radius: 50%; border: 1px solid #009bff44; transform: rotate(-35deg); background: linear-gradient(160deg,transparent 45%,#0056ae55); }
+.ip-real::after { content:''; position: absolute; inset: 7px; border-radius: inherit; background: linear-gradient(120deg,#ffffff08,transparent 35%); pointer-events: none; }
+.ip-phone-camera { position:absolute; width: 22%; height: 5px; background: #00070f; border-radius: 10px; top: 7px; left: 39%; }
+.ip-real .ip-logo { font-size: calc(11 * var(--ip-u)); align-self: flex-start; position: relative; }
+.ip-real .ip-logo > svg { width: calc(14 * var(--ip-u)); height: calc(18 * var(--ip-u)); }
+.ip-real > p { position: relative; font-family: Manrope,Arial,sans-serif; font-size: calc(16 * var(--ip-u)); font-style: normal; font-weight: 800; transform: none; margin: 0 0 16%; white-space: normal; line-height: 1.3; color:#f5f9ff; }
+.ip-phone-chart { opacity: .6; position: relative; }
+.ip-phone-chart .ip-growth-line { position:static; width: 100%; height: calc(40 * var(--ip-u)); filter: drop-shadow(0 0 8px #008cff); }
+.ip-learn { display: flex; align-items: center; gap: 6px; color:#00c7ff; font-size:calc(9 * var(--ip-u)); margin-top:auto; }
+.ip-service-card { border-color: #0b538066; box-shadow: inset 0 1px 0 #097ac314; background: radial-gradient(ellipse at 0 0,#00336540,transparent 70%),linear-gradient(145deg,#001329,#000d1d); }
+.ip-service-card:hover { box-shadow: 0 8px 28px #0006,0 0 20px #007bff15; }
+.ip-home h2 { color: #f4f7ff; }
+.ip-home .ip-eyebrow > span { background: none; padding-left: 0; }
+.ip-review { background: linear-gradient(135deg,#00204488,#001025); border-color: #085c8b66; }
+.ip-plan { background: linear-gradient(145deg,#00204466,#000d1e); border-color: #085c8b77; }
+.ip-plan-featured { box-shadow: 0 0 24px #007bff20,inset 0 0 30px #003b7d22; }
+@media(min-width:701px) { .ip-menu { display:none; } }
+@media(max-width:700px) {
+ .ip-real { width: 150px; height: 280px; min-height: 0; padding:20px; justify-self:center; }
+ .ip-real > p { font-size:18px; }
+ .ip-real .ip-logo { font-size:12px; }
+ .ip-why-grid > .ip-results-orbit { inset: 35% -10% -8% -8%; }
+ .ip-learn { font-size:11px; }
+}
+@media(max-width:700px) {
+ .ip-why-grid > .ip-why-copy { grid-column: 1 / -1; max-width: none; padding: 0; }
+ .ip-why-grid > * { min-width: 0; }
+ .ip-hero:before { background: linear-gradient(90deg,#000d1cf2,#000d1cbb 45%,#000d1c33),linear-gradient(0deg,#000d1c,transparent 50%); }
+}
+
+/* Keep the phone artwork proportional to the adjacent results cards. */
+.ip-real { transform: perspective(900px) rotateY(-12deg) rotateZ(3deg); padding: 26px 20px 24px; gap: 20px; }
+.ip-real > p { margin: 0; font-size: clamp(17px, 1.2vw, 21px); line-height: 1.35; }
+.ip-real .ip-phone-chart { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 8px; opacity: 1; }
+.ip-phone-label { color: #8cb4d6; font-size: 10px; }
+.ip-phone-chart > strong { color: #edfaff; font-size: 28px; letter-spacing: -1px; }
+.ip-phone-chart .ip-growth-line { height: 64px; width: 100%; margin-block: 5px; }
+.ip-phone-trend { color: #37cfff; font-size: 9px; }
+.ip-why-grid > .ip-results-orbit { inset: 0 -1% 0 43%; }
+@media(max-width:700px) {
+ .ip-real { padding: 24px 16px 20px; gap: 12px; }
+ .ip-real > p { font-size: 17px; }
+ .ip-phone-chart > strong { font-size: 24px; }
+ .ip-phone-chart .ip-growth-line { height: 46px; }
+ .ip-why-grid > .ip-results-orbit { inset: 43% -5% 0 -5%; }
 }
