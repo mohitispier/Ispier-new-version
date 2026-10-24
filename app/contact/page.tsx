@@ -1,5 +1,40 @@
 ﻿import type { Metadata } from "next";
 import { ContactForm, PageIntro, Arrow } from "../components/site";
 import { company } from "../content";
-export const metadata:Metadata={title:"Contact us"};
-export default function Contact(){return <><PageIntro label="CONTACT US" title="Let’s Grow Your Brand" accent="the Right Way" description="Your audience is already out there, talking and looking for solutions. Let’s make sure they find you."/><section className="container contact-grid"><div className="contact-info"><span className="eyebrow">ISPIER TECH PVT LTD</span><h2>Get in Touch</h2><p>Ready to build trust, increase visibility and grow your business through authentic digital marketing? Reach out to Ispier Tech Pvt Ltd today.</p><a href={"mailto:"+company.email} className="contact-email">{company.email}<Arrow diagonal/></a><div className="original-contact-detail"><span>CALL US</span><a href="tel:+919876543210">{company.phone}</a></div><div className="original-contact-detail"><span>OUR OFFICE</span><p>{company.office}</p></div></div><ContactForm/></section></>}
+export const metadata: Metadata = { title: "Contact us" };
+export default function Contact() {
+  return (
+    <>
+      <PageIntro
+        label="CONTACT US"
+        title="Let’s Grow Your Brand"
+        accent="the Right Way"
+        description="Your audience is already out there, talking and looking for solutions. Let’s make sure they find you."
+      />
+      <section className="container contact-grid">
+        <div className="contact-info">
+          <span className="eyebrow">ISPIER TECH PVT LTD</span>
+          <h2>Get in Touch</h2>
+          <p>
+            Ready to build trust, increase visibility and grow your business
+            through authentic digital marketing? Reach out to Ispier Tech Pvt
+            Ltd today.
+          </p>
+          <a href={"mailto:" + company.email} className="contact-email">
+            {company.email}
+            <Arrow diagonal />
+          </a>
+          <div className="original-contact-detail">
+            <span>CALL US</span>
+            <a href="tel:+919876543210">{company.phone}</a>
+          </div>
+          <div className="original-contact-detail">
+            <span>OUR OFFICE</span>
+            <p>{company.office}</p>
+          </div>
+        </div>
+        <ContactForm />
+      </section>
+    </>
+  );
+}

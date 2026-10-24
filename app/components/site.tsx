@@ -5,21 +5,262 @@ import { services } from "../content";
 export { services } from "../content";
 
 import { useState } from "react";
-export function Arrow({diagonal=false}:{diagonal?:boolean}){return <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d={diagonal?"M6 18 18 6M6 6h12v12":"M4 12h15m-6-6 6 6-6 6"}/></svg>}
-export function Logo(){return <span className="logo"><span className="logo-symbol" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="1.5" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>Ispier</span>}
-export function Header(){return <DesignHeader/>;}
-export function Footer(){return <DesignFooter/>;}
-export function ServiceIcon({id}:{id:string}){return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{(id==="reddit"||id==="quora"||id==="social")?<><path d="M21 11a8 8 0 0 1-8 8H9l-6 3 2-6a8 8 0 1 1 16-5Z"/><path d="M8 10h8M8 14h5"/></>:id==="seo"?<><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6M7 12l3-4 3 2"/></>:(id==="brand"||id==="wikipedia")?<><path d="M12 3 4 6v6c0 4 8 9 8 9s8-5 8-9V6Z"/><path d="m8.5 11.5 2.5 2.5 4.5-5"/></>:<><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="M3 8h18m-12 4-3 2 3 2m6-4 3 2-3 2"/></>}</svg>}
-export function ServiceCards({full=false}:{full?:boolean}){return <div className={full?"service-grid full":"service-grid"}>{services.map(s=><article id={s.id} className={"service-card "+s.color} key={s.id}><div className="card-top"><span className="service-symbol" aria-hidden="true"><ServiceIcon id={s.id}/></span><span className="index">/{s.number}</span></div><p className="eyebrow">{s.tag}</p><h3>{s.name}</h3><p>{s.text}</p>{full&&<ul className="service-items">{s.items.map(i=><li key={i}>✓ {i}</li>)}</ul>}<Link href={full?"/contact":"/services#"+s.id} className="card-link">{full?"Let’s discuss your project":"Explore service"}<Arrow diagonal/></Link></article>)}</div>}
-export function CTA(){return <section className="container cta"><div className="cta-orbit" aria-hidden="true"/><div className="cta-content"><span className="eyebrow"><span className="status-dot"/>YOUR NEXT CHAPTER</span><h2>Let’s Grow Your Brand<br/><span>the Right Way</span></h2><p>Your audience is already out there, talking and looking for solutions. Let’s make sure they find you.</p><Link href="/contact" className="button button-primary">Start a conversation <Arrow diagonal/></Link></div><div className="cta-logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div></section>}
-export function PageIntro({label,title,accent,description}:{label:string;title:string;accent:string;description:string}){return <section className="container page-intro"><span className="eyebrow"><span className="status-dot"/>{label}</span><h1>{title}<br/><span className="serif">{accent}</span></h1><p>{description}</p></section>}
-export function ContactForm(){
-const[ready,setReady]=useState(false);
-function submit(event:React.FormEvent<HTMLFormElement>){event.preventDefault();const d=new FormData(event.currentTarget);const body="Name: "+d.get("name")+"\nEmail: "+d.get("email")+"\nCompany: "+d.get("company")+"\nService: "+d.get("service")+"\n\n"+d.get("message");window.location.href="mailto:hello@ispier.com?subject="+encodeURIComponent("Project enquiry — "+d.get("name"))+"&body="+encodeURIComponent(body);setReady(true)}
-return <form className="contact-form" onSubmit={submit}><div className="form-row"><label>Your name *<input name="name" required autoComplete="name" placeholder="Alex Morgan" maxLength={100}/></label><label>Work email *<input name="email" type="email" required autoComplete="email" placeholder="alex@company.com"/></label></div><label>Company / website<input name="company" autoComplete="organization" placeholder="Where are you building?"/></label><label>What can we help with?<select name="service" defaultValue=""><option value="" disabled>Select a service</option>{services.map(s=><option key={s.id}>{s.name}</option>)}<option>Something else / help me decide</option></select></label><label>A little about your project *<textarea name="message" required minLength={10} rows={5} placeholder="Your goals, your challenges, your next big idea…" maxLength={5000}/></label><p className="form-note">This opens your email app with a prepared enquiry. Send the email to reach our team.</p><button className="button button-dark" type="submit">Prepare my enquiry <Arrow diagonal/></button>{ready&&<p className="form-status" role="status">Your email draft is ready. Please send it from your email app, or email hello@ispier.com directly.</p>}</form>;
+export function Arrow({ diagonal = false }: { diagonal?: boolean }) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      aria-hidden="true"
+    >
+      <path d={diagonal ? "M6 18 18 6M6 6h12v12" : "M4 12h15m-6-6 6 6-6 6"} />
+    </svg>
+  );
 }
-
-
-
-
-
+export function Logo() {
+  return (
+    <span className="logo">
+      <span className="logo-symbol" aria-hidden="true">
+        <svg
+          width="23"
+          height="23"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        >
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      </span>
+      Ispier
+    </span>
+  );
+}
+export function Header() {
+  return <DesignHeader />;
+}
+export function Footer() {
+  return <DesignFooter />;
+}
+export function ServiceIcon({ id }: { id: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {id === "reddit" || id === "quora" || id === "social" ? (
+        <>
+          <path d="M21 11a8 8 0 0 1-8 8H9l-6 3 2-6a8 8 0 1 1 16-5Z" />
+          <path d="M8 10h8M8 14h5" />
+        </>
+      ) : id === "seo" ? (
+        <>
+          <circle cx="10" cy="10" r="6.5" />
+          <path d="m15 15 6 6M7 12l3-4 3 2" />
+        </>
+      ) : id === "brand" || id === "wikipedia" ? (
+        <>
+          <path d="M12 3 4 6v6c0 4 8 9 8 9s8-5 8-9V6Z" />
+          <path d="m8.5 11.5 2.5 2.5 4.5-5" />
+        </>
+      ) : (
+        <>
+          <rect x="2.5" y="4" width="19" height="16" rx="2" />
+          <path d="M3 8h18m-12 4-3 2 3 2m6-4 3 2-3 2" />
+        </>
+      )}
+    </svg>
+  );
+}
+export function ServiceCards({ full = false }: { full?: boolean }) {
+  return (
+    <div className={full ? "service-grid full" : "service-grid"}>
+      {services.map((s) => (
+        <article id={s.id} className={"service-card " + s.color} key={s.id}>
+          <div className="card-top">
+            <span className="service-symbol" aria-hidden="true">
+              <ServiceIcon id={s.id} />
+            </span>
+            <span className="index">/{s.number}</span>
+          </div>
+          <p className="eyebrow">{s.tag}</p>
+          <h3>{s.name}</h3>
+          <p>{s.text}</p>
+          {full && (
+            <ul className="service-items">
+              {s.items.map((i) => (
+                <li key={i}>✓ {i}</li>
+              ))}
+            </ul>
+          )}
+          <Link
+            href={full ? "/contact" : "/services#" + s.id}
+            className="card-link"
+          >
+            {full ? "Let’s discuss your project" : "Explore service"}
+            <Arrow diagonal />
+          </Link>
+        </article>
+      ))}
+    </div>
+  );
+}
+export function CTA() {
+  return (
+    <section className="container cta">
+      <div className="cta-orbit" aria-hidden="true" />
+      <div className="cta-content">
+        <span className="eyebrow">
+          <span className="status-dot" />
+          YOUR NEXT CHAPTER
+        </span>
+        <h2>
+          Let’s Grow Your Brand
+          <br />
+          <span>the Right Way</span>
+        </h2>
+        <p>
+          Your audience is already out there, talking and looking for solutions.
+          Let’s make sure they find you.
+        </p>
+        <Link href="/contact" className="button button-primary">
+          Start a conversation <Arrow diagonal />
+        </Link>
+      </div>
+      <div className="cta-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      </div>
+    </section>
+  );
+}
+export function PageIntro({
+  label,
+  title,
+  accent,
+  description,
+}: {
+  label: string;
+  title: string;
+  accent: string;
+  description: string;
+}) {
+  return (
+    <section className="container page-intro">
+      <span className="eyebrow">
+        <span className="status-dot" />
+        {label}
+      </span>
+      <h1>
+        {title}
+        <br />
+        <span className="serif">{accent}</span>
+      </h1>
+      <p>{description}</p>
+    </section>
+  );
+}
+export function ContactForm() {
+  const [ready, setReady] = useState(false);
+  function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const d = new FormData(event.currentTarget);
+    const body =
+      "Name: " +
+      d.get("name") +
+      "\nEmail: " +
+      d.get("email") +
+      "\nCompany: " +
+      d.get("company") +
+      "\nService: " +
+      d.get("service") +
+      "\n\n" +
+      d.get("message");
+    window.location.href =
+      "mailto:hello@ispier.com?subject=" +
+      encodeURIComponent("Project enquiry — " + d.get("name")) +
+      "&body=" +
+      encodeURIComponent(body);
+    setReady(true);
+  }
+  return (
+    <form className="contact-form" onSubmit={submit}>
+      <div className="form-row">
+        <label>
+          Your name *
+          <input
+            name="name"
+            required
+            autoComplete="name"
+            placeholder="Alex Morgan"
+            maxLength={100}
+          />
+        </label>
+        <label>
+          Work email *
+          <input
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="alex@company.com"
+          />
+        </label>
+      </div>
+      <label>
+        Company / website
+        <input
+          name="company"
+          autoComplete="organization"
+          placeholder="Where are you building?"
+        />
+      </label>
+      <label>
+        What can we help with?
+        <select name="service" defaultValue="">
+          <option value="" disabled>
+            Select a service
+          </option>
+          {services.map((s) => (
+            <option key={s.id}>{s.name}</option>
+          ))}
+          <option>Something else / help me decide</option>
+        </select>
+      </label>
+      <label>
+        A little about your project *
+        <textarea
+          name="message"
+          required
+          minLength={10}
+          rows={5}
+          placeholder="Your goals, your challenges, your next big idea…"
+          maxLength={5000}
+        />
+      </label>
+      <p className="form-note">
+        This opens your email app with a prepared enquiry. Send the email to
+        reach our team.
+      </p>
+      <button className="button button-dark" type="submit">
+        Prepare my enquiry <Arrow diagonal />
+      </button>
+      {ready && (
+        <p className="form-status" role="status">
+          Your email draft is ready. Please send it from your email app, or
+          email hello@ispier.com directly.
+        </p>
+      )}
+    </form>
+  );
+}

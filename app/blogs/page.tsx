@@ -1,9 +1,42 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-export const metadata: Metadata = {title: "Brand Growth Insights"};
+export const metadata: Metadata = { title: "Brand Growth Insights" };
 const articles = [
-  {title:"Start with the conversation, not the campaign",text:"A useful community strategy begins with listening. Read the questions your audience asks, understand the language they use, and identify where your experience can add something helpful. On Reddit and Quora, a relevant answer gives people a reason to pay attention. Make the answer useful on its own, disclose your connection to the brand, and follow each community’s rules.",href:"/services#reddit",label:"Explore community marketing"},
-  {title:"Build a reputation people can verify",text:"A consistent brand presence helps customers understand who you are and what you offer. Keep business information accurate, support claims with clear evidence, and respond thoughtfully to feedback. Wikipedia requires independent, reliable sources and editorial neutrality; an article is not a promotional landing page, and inclusion is never guaranteed.",href:"/services#wikipedia",label:"Explore reputation strategy"},
-  {title:"Connect visibility to a meaningful next step",text:"Traffic becomes useful when visitors can find the answer they came for. Organize your website around customer questions, make pages easy to navigate, and give each page a clear next step. Review search visibility, relevant enquiries and engagement together, so your content decisions reflect the goals of your business.",href:"/services#seo",label:"Explore search strategy"}
+  {
+    title: "Start with the conversation, not the campaign",
+    text: "A useful community strategy begins with listening. Read the questions your audience asks, understand the language they use, and identify where your experience can add something helpful. On Reddit and Quora, a relevant answer gives people a reason to pay attention. Make the answer useful on its own, disclose your connection to the brand, and follow each community’s rules.",
+    href: "/services#reddit",
+    label: "Explore community marketing",
+  },
+  {
+    title: "Build a reputation people can verify",
+    text: "A consistent brand presence helps customers understand who you are and what you offer. Keep business information accurate, support claims with clear evidence, and respond thoughtfully to feedback. Wikipedia requires independent, reliable sources and editorial neutrality; an article is not a promotional landing page, and inclusion is never guaranteed.",
+    href: "/services#wikipedia",
+    label: "Explore reputation strategy",
+  },
+  {
+    title: "Connect visibility to a meaningful next step",
+    text: "Traffic becomes useful when visitors can find the answer they came for. Organize your website around customer questions, make pages easy to navigate, and give each page a clear next step. Review search visibility, relevant enquiries and engagement together, so your content decisions reflect the goals of your business.",
+    href: "/services#seo",
+    label: "Explore search strategy",
+  },
 ];
-export default function Blogs(){return <div className="ip-home"><div className="ip-wrap ip-insights"><div className="ip-eyebrow">Ispier Insights</div><h1>Ideas for stronger brands.</h1><div className="ip-insight-list">{articles.map(article=><article key={article.title}><h2>{article.title}</h2><p>{article.text}</p><Link href={article.href}>{article.label} →</Link></article>)}</div></div></div>}
+export default function Blogs() {
+  return (
+    <div className="ip-home">
+      <div className="ip-wrap ip-insights">
+        <div className="ip-eyebrow">Ispier Insights</div>
+        <h1>Ideas for stronger brands.</h1>
+        <div className="ip-insight-list">
+          {articles.map((article) => (
+            <article key={article.title}>
+              <h2>{article.title}</h2>
+              <p>{article.text}</p>
+              <Link href={article.href}>{article.label} →</Link>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
