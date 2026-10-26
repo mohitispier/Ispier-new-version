@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./internal.css";
 import "./light-theme.css";
+import "./novaly-theme.css";
+import "./comfortable-layout.css";
 import { Header, Footer } from "./components/site";
 export const metadata: Metadata = {
   icons: { icon: "/icon.svg" },
