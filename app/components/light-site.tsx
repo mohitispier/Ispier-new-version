@@ -39,6 +39,7 @@ const navigation = [
   ["Services", "/services"],
   ["Case Studies", "/case-studies"],
   ["Blog", "/blogs"],
+  ["Pricing", "/pricing"],
   ["Contact", "/contact"],
 ];
 export function LightHeader() {
@@ -179,40 +180,6 @@ export function LightHeader() {
         </div>
       </dialog>
     </>
-  );
-}
-function NewsletterRequest() {
-  const [ready, setReady] = useState(false);
-  function submit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const email = new FormData(e.currentTarget).get("email");
-    window.location.href =
-      "mailto:hello@ispier.com?subject=Marketing%20insights%20request&body=" +
-      encodeURIComponent("Please send marketing insights to: " + email);
-    setReady(true);
-  }
-  return (
-    <form className="nv-newsletter" onSubmit={submit}>
-      <label className="nv-sr-only" htmlFor="newsletter-email">
-        Your email address
-      </label>
-      <input
-        type="email"
-        id="newsletter-email"
-        name="email"
-        placeholder="Your email address"
-        autoComplete="email"
-        required
-      />
-      <button className="nv-button" type="submit">
-        <span aria-hidden="true">&#9993;</span>Request Updates
-      </button>
-      <small>
-        {ready
-          ? "Your email draft is ready. Send it to request updates."
-          : "Opens your email app to request updates."}
-      </small>
-    </form>
   );
 }
 export function LightFooter() {

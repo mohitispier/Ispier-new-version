@@ -9,6 +9,8 @@ import { caseStudies } from "../case-study-data";
 import { LightArrow } from "./light-site";
 import { ServiceIcon } from "./site";
 import { ExploreServices, AdvisorsSection } from "./home-extras";
+import { HomePricing } from "./pricing-section";
+import HomeFAQ from "./home-faq";
 
 const serviceSet = [
   [
@@ -428,6 +430,8 @@ export default function NovalyHome() {
           </Link>
         </div>
       </section>
+      <HomePricing/>
+      <HomeFAQ/>
       <section className="ref-final-cta">
         <div className="ref-wrap">
           <div>

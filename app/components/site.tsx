@@ -1,11 +1,9 @@
 "use client";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import { LightHeader, LightFooter } from "./light-site";
-import { LightIcon } from "./light-home";
-import { services } from "../content";
-export { services } from "../content";
+import { LightIcon } from "./service-icons";
+import { services, plans } from "../content";
 
-import { useState } from "react";
 export function Arrow({ diagonal = false }: { diagonal?: boolean }) {
   return (
     <svg
@@ -19,26 +17,6 @@ export function Arrow({ diagonal = false }: { diagonal?: boolean }) {
     >
       <path d={diagonal ? "M6 18 18 6M6 6h12v12" : "M4 12h15m-6-6 6 6-6 6"} />
     </svg>
-  );
-}
-export function Logo() {
-  return (
-    <span className="logo">
-      <span className="logo-symbol" aria-hidden="true">
-        <svg
-          width="23"
-          height="23"
-          viewBox="0 0 24 24"
-          fill="white"
-          stroke="white"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-        >
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-        </svg>
-      </span>
-      Ispier
-    </span>
   );
 }
 export function Header() {
@@ -83,96 +61,9 @@ export function ServiceIcon({ id }: { id: string }) {
     </svg>
   );
 }
-export function ServiceCards({ full = false }: { full?: boolean }) {
-  return (
-    <div className={full ? "service-grid full" : "service-grid"}>
-      {services.map((s) => (
-        <article id={s.id} className={"service-card " + s.color} key={s.id}>
-          <div className="card-top">
-            <span className="service-symbol" aria-hidden="true">
-              <ServiceIcon id={s.id} />
-            </span>
-            <span className="index">/{s.number}</span>
-          </div>
-          <p className="eyebrow">{s.tag}</p>
-          <h3>{s.name}</h3>
-          <p>{s.text}</p>
-          {full && (
-            <ul className="service-items">
-              {s.items.map((i) => (
-                <li key={i}>✓ {i}</li>
-              ))}
-            </ul>
-          )}
-          <Link
-            href={full ? "/contact" : "/services/" + s.id}
-            className="card-link"
-          >
-            {full ? "Let’s discuss your project" : "Explore service"}
-            <Arrow diagonal />
-          </Link>
-        </article>
-      ))}
-    </div>
-  );
-}
-export function CTA() {
-  return (
-    <section className="container cta">
-      <div className="cta-orbit" aria-hidden="true" />
-      <div className="cta-content">
-        <span className="eyebrow">
-          <span className="status-dot" />
-          YOUR NEXT CHAPTER
-        </span>
-        <h2>
-          Let’s Grow Your Brand
-          <br />
-          <span>the Right Way</span>
-        </h2>
-        <p>
-          Your audience is already out there, talking and looking for solutions.
-          Let’s make sure they find you.
-        </p>
-        <Link href="/contact" className="button button-primary">
-          Start a conversation <Arrow diagonal />
-        </Link>
-      </div>
-      <div className="cta-logo" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-        </svg>
-      </div>
-    </section>
-  );
-}
-export function PageIntro({
-  label,
-  title,
-  accent,
-  description,
-}: {
-  label: string;
-  title: string;
-  accent: string;
-  description: string;
-}) {
-  return (
-    <section className="container page-intro">
-      <span className="eyebrow">
-        <span className="status-dot" />
-        {label}
-      </span>
-      <h1>
-        {title}
-        <br />
-        <span className="serif">{accent}</span>
-      </h1>
-      <p>{description}</p>
-    </section>
-  );
-}
 export function ContactForm() {
+  const [selectedPlan,setSelectedPlan]=useState("");
+  useEffect(()=>{const value=new URLSearchParams(window.location.search).get("plan");const plan=plans.find(item=>item.name.toLowerCase()===value);if(plan)setSelectedPlan(plan.name);},[]);
   const [ready, setReady] = useState(false);
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -186,6 +77,7 @@ export function ContactForm() {
       d.get("company") +
       "\nService: " +
       d.get("service") +
+      (selectedPlan ? "\nPlan: "+selectedPlan : "") +
       "\n\n" +
       d.get("message");
     window.location.href =
@@ -197,6 +89,7 @@ export function ContactForm() {
   }
   return (
     <form className="contact-form" onSubmit={submit}>
+      {selectedPlan&&<div className="ip-plan-enquiry">Enquiring about the <strong>{selectedPlan}</strong> plan</div>}
       <div className="form-row">
         <label>
           Your name *

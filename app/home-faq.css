@@ -1,0 +1,113 @@
+.reference-home .ip-home-faq {
+  padding-block: 88px;
+  background: linear-gradient(115deg, #f5faff, #edf5fe);
+}
+.ip-home-faq-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.25fr;
+  gap: 80px;
+  align-items: start;
+}
+.reference-home .ip-faq-intro h2 {
+  font: 400 clamp(36px, 4vw, 52px)/1.08 var(--ip-font-display, Georgia, serif);
+  letter-spacing: -0.035em;
+  color: #18334f;
+}
+.reference-home .ip-faq-intro > p {
+  font: 14px/1.85 var(--ip-font-body, Arial, sans-serif);
+  color: #6a7d91;
+  max-width: 310px;
+  margin-top: 20px;
+}
+.reference-home .ip-faq-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #176fcf;
+  font: 600 12px/1.6 var(--ip-font-body, Arial, sans-serif);
+  margin-top: 26px;
+}
+.ip-faq-contact svg {
+  width: 17px;
+  height: 17px;
+  color: #a4834a;
+}
+.ip-home-faq-list {
+  border-top: 1px solid #cadced;
+}
+.ip-home-faq-list details {
+  border-bottom: 1px solid #cadced;
+}
+.ip-home-faq-list summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+  color: #28445e;
+  font: 400 23px/1.3 var(--ip-font-display, Georgia, serif);
+  cursor: pointer;
+}
+.ip-home-faq-list summary::-webkit-details-marker {
+  display: none;
+}
+.reference-home .ip-home-faq-list summary > span {
+  font: 400 23px/1 var(--ip-font-body, Arial, sans-serif);
+  color: #a4834a;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.ip-home-faq-list details[open] summary > span {
+  transform: rotate(45deg);
+}
+.reference-home .ip-home-faq-answer p {
+  font: 14px/1.9 var(--ip-font-body, Arial, sans-serif);
+  color: #627b92;
+  margin: 0;
+  padding: 0 40px 24px 0;
+}
+.ip-home-faq-answer a {
+  color: #176fcf;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ip-home-faq-list summary:focus-visible {
+  outline: 3px solid #359aff;
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+@media (max-width: 1000px) {
+  .ip-home-faq-grid {
+    gap: 40px;
+  }
+}
+@media (max-width: 760px) {
+  .reference-home .ip-home-faq {
+    padding-block: 56px;
+  }
+  .ip-home-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .reference-home .ip-faq-intro h2 {
+    font-size: 38px;
+  }
+  .reference-home .ip-faq-intro > p {
+    max-width: 400px;
+    font-size: 13px;
+  }
+  .ip-home-faq-list summary {
+    font-size: 21px;
+    padding-block: 21px;
+  }
+  .reference-home .ip-home-faq-answer p {
+    font-size: 13px;
+    padding-right: 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ip-home-faq-list summary > span {
+    transition: none;
+  }
+}

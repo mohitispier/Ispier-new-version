@@ -14,6 +14,8 @@ import "./blog-article.css";
 import "./service-detail.css";
 import "./home-links.css";
 import "./case-study.css";
+import "./pricing-theme.css";
+import "./home-faq.css";
 import { Header, Footer } from "./components/site";
 export const metadata: Metadata = {
   metadataBase: new URL("https://ispier.com"),
