@@ -26,7 +26,7 @@ const articles = [
 ];
 
 const categories = ["Community marketing", "Brand reputation", "Search & visibility"];
-const images = ["/images/creative-meeting.jpg", "/images/strategy.jpg", "/images/analytics.jpg"];
+const images = ["/images/internal/about.webp", "/images/internal/approach.webp", "/images/services/seo.webp"];
 export default function Blogs() {
  return <InnerPage active="/blogs"><InnerHero centered label="Ispier insights" title="Fresh perspectives." accent="Stronger brands." description="Practical thinking on the conversations, content and digital experiences that help your business grow." />
  <section className="in-wrap in-insights-section"><article className="in-featured-insight"><div className="in-featured-photo"><Image src={images[0]} alt="A team discussing ideas together" fill sizes="(max-width:760px) 90vw, 50vw" /></div><div className="in-featured-copy"><span className="in-kicker"><i />Featured perspective</span><span className="in-service-tag">{categories[0]}</span><h2>{articles[0].title}</h2><p>{articles[0].text.slice(0,articles[0].text.indexOf("On Reddit"))}</p><a href="#insight-1" className="in-text-link">Read the perspective <Arrow /></a></div></article>

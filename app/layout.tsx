@@ -8,6 +8,8 @@ import "./typography.css";
 import "./partnership.css";
 import "./header.css";
 import "./home-extras.css";
+import "./gold-accents.css";
+import "./internal-theme.css";
 import { Header, Footer } from "./components/site";
 export const metadata: Metadata = {
   icons: { icon: "/icon.svg" },

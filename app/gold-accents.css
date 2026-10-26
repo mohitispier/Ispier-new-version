@@ -1,0 +1,31 @@
+/* Muted gold is a supporting accent alongside the blue brand palette. */
+:root{--ip-gold:#c7a66b;--ip-gold-ink:#80602d;--ip-gold-pale:#f5eddf}
+.reference-home .ref-kicker:before{content:"";display:inline-block;width:23px;height:2px;margin-right:10px;vertical-align:middle;background:var(--ip-gold)}
+.reference-home .ref-hero .ref-kicker{border-color:#c7a66b66;color:#e0c797;background:#c7a66b0a}
+.reference-home .ref-hero .ref-kicker:before{display:none}
+.reference-home .ref-hero .ref-kicker b{color:var(--ip-gold)}
+.reference-home .ref-hero h1>em{text-decoration-line:underline;text-decoration-color:#c7a66b99;text-decoration-thickness:2px;text-underline-offset:10px;text-decoration-skip-ink:auto}
+.reference-home .ref-process-number{background:var(--ip-gold-pale);color:var(--ip-gold-ink);border:1px solid #c7a66b55}
+.reference-home .ref-process-grid li{border-top-color:#c7a66b80}
+.reference-home .ref-partnership-points li>span{color:var(--ip-gold-ink)}
+.reference-home .ref-partnership-points li{border-top-color:#c7a66b4d}
+.reference-home .ref-testimonials .ref-quote{color:var(--ip-gold)}
+.reference-home .ref-dots button[aria-pressed=true]{background:var(--ip-gold)}
+.reference-home .ref-about-values li:before{background:var(--ip-gold-pale);color:var(--ip-gold-ink)}
+.reference-home .ref-about-image{box-shadow:14px 14px 0 #eee5d4}
+.reference-home .ref-final-cta .ref-kicker{color:#e0c797}
+.ref-footer-bottom{border-top-color:#c7a66b40}
+.ref-footer-contact-link{color:#dfc28d}
+@media(max-width:620px){.reference-home .ref-about-image{box-shadow:8px 8px 0 #eee5d4}.reference-home .ref-hero h1>em{text-underline-offset:7px}}
+
+/* Small additional gold details keep the blue and gold balance restrained. */
+.reference-home .ref-service>span:first-child{background:var(--ip-gold-pale);color:var(--ip-gold-ink);border:1px solid #c7a66b33}
+.reference-home .ref-service:hover{border-color:#c7a66b99;box-shadow:0 12px 28px #80602d0d}
+.reference-home .ref-case i{background:var(--ip-gold-pale);color:var(--ip-gold-ink)}
+.reference-home .ref-case:hover,.reference-home .ref-article-grid article:hover{border-color:#c7a66b99}
+.reference-home .ip-advisor-photo{border-bottom:3px solid var(--ip-gold)}
+.reference-home .ip-core-image{box-shadow:0 0 0 1px #c7a66b4d}
+.reference-home .ip-core-copy>.ip-extras-link svg{color:var(--ip-gold-ink)}
+.reference-home .ref-hero-proof strong{color:#dfc28d}
+.reference-home .ref-hero-proof{border-top-color:#c7a66b4d}
+.ref-footer-socials a:hover{color:#dfc28d;border-color:#c7a66b99;background:#c7a66b0d}
