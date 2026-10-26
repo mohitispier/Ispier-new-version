@@ -4,6 +4,10 @@ import "./internal.css";
 import "./light-theme.css";
 import "./novaly-theme.css";
 import "./comfortable-layout.css";
+import "./typography.css";
+import "./partnership.css";
+import "./header.css";
+import "./home-extras.css";
 import { Header, Footer } from "./components/site";
 export const metadata: Metadata = {
   icons: { icon: "/icon.svg" },

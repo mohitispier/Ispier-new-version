@@ -1,0 +1,31 @@
+/* Helix ORM font pairing. Typography only; existing visual design is retained. */
+@font-face{font-family:IspierGeist;src:url('/fonts/geist-latin.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+:root{--ip-font-body:IspierGeist,Arial,sans-serif;--ip-font-display:Georgia,'Times New Roman',serif}
+.reference-home,.lh-header,.ref-site-footer,.nv-drawer,.nv-search-dialog{font-family:var(--ip-font-body);-webkit-font-smoothing:antialiased}
+.reference-home :is(p,a,button,li,span,strong),.lh-header :is(a,button),.ref-site-footer :is(p,a,span,h3){font-family:var(--ip-font-body)}
+.reference-home :is(h1,h2,h3),.reference-home .ref-hero h1>span,.reference-home .ref-hero h1>em{font-family:var(--ip-font-display);font-weight:400}
+.reference-home .ref-hero h1{font-family:var(--ip-font-display);font-size:clamp(50px,5.5vw,72px);font-weight:400;letter-spacing:-.035em;line-height:1.02}
+.reference-home .ref-hero h1>em{font-style:italic;font-weight:400}
+.reference-home .ref-hero-copy>p{font-family:var(--ip-font-body);font-size:13px;line-height:1.8;font-weight:400}
+.reference-home .ref-section-top h2,.reference-home .ref-about h2,.reference-home .ref-small-title h2,.reference-home .ref-process h2{font-family:var(--ip-font-display);font-size:clamp(40px,4.8vw,60px);font-weight:400;line-height:1.04;letter-spacing:-.035em}
+.reference-home .ref-impact h2,.reference-home .ref-testimonials h2{font-family:var(--ip-font-display);font-size:clamp(36px,4.2vw,52px);font-weight:400;line-height:1.08;letter-spacing:-.035em}
+.reference-home .ref-kicker,.reference-home .ref-hero .ref-kicker{font-family:var(--ip-font-body);font-size:10px;font-weight:700;letter-spacing:.12em;line-height:1.5}
+.reference-home .ref-section-top p,.reference-home .ref-about p{font-family:var(--ip-font-body);font-size:14px;line-height:1.85;font-weight:400}
+.reference-home .ref-service h3{font-family:var(--ip-font-display);font-size:clamp(21px,2.2vw,27px);font-weight:400;line-height:1.14;letter-spacing:-.02em}
+.reference-home .ref-service p{font-family:var(--ip-font-body);font-size:13px;line-height:1.8}
+.reference-home .ref-case h3,.reference-home .ref-article-grid h3{font-family:var(--ip-font-display);font-weight:400;font-size:25px;line-height:1.15;letter-spacing:-.025em}
+.reference-home .ref-process-grid h3{font-family:var(--ip-font-display);font-size:22px;line-height:1.2;font-weight:400;letter-spacing:0}
+.reference-home .ref-process-grid p{font-family:var(--ip-font-body);font-size:13px;line-height:1.8}
+.reference-home .ref-impact-grid strong{font-family:var(--ip-font-display);font-weight:400}
+.reference-home .ref-impact-grid h3{font-family:var(--ip-font-body);font-weight:600;font-size:13px;line-height:1.5}
+.reference-home .ref-impact-grid p{font-family:var(--ip-font-body);font-size:12px;line-height:1.8}
+.reference-home .ref-testimonials blockquote{font-family:var(--ip-font-display);font-weight:400;font-size:clamp(22px,2.6vw,30px);line-height:1.3;letter-spacing:-.015em}
+.reference-home .ref-quote,.reference-home .ref-story-caption{font-family:var(--ip-font-display)}
+.reference-home .ref-button,.reference-home .ref-arrow-link,.reference-home .ref-watch,.ref-process-link{font-family:var(--ip-font-body);font-weight:650;letter-spacing:0}
+.lh-nav-links>a,.ref-header-cta{font-family:var(--ip-font-body);font-size:12px;font-weight:600}
+.reference-home .ref-final-cta h2{font-family:var(--ip-font-display);font-size:clamp(44px,5.5vw,67px);font-weight:400;line-height:1.02;letter-spacing:-.035em}
+.reference-home .ref-final-cta p{font-family:var(--ip-font-body);font-size:13px;line-height:1.8}
+.ref-site-footer h3{font-family:var(--ip-font-body);font-weight:600;font-size:13px;letter-spacing:0}
+.ref-site-footer :is(p,a){font-family:var(--ip-font-body)}
+@media(max-width:900px) and (min-width:621px){.reference-home .ref-hero h1{font-size:clamp(46px,6.2vw,61px)}}
+@media(max-width:620px){.reference-home .ref-hero h1{font-size:clamp(45px,12vw,61px);line-height:1.02;letter-spacing:-.035em}.reference-home .ref-hero-copy>p{font-size:12px;line-height:1.8}.reference-home .ref-section-top h2,.reference-home .ref-about h2,.reference-home .ref-small-title h2,.reference-home .ref-process h2{font-size:43px;line-height:1.04}.reference-home .ref-impact h2,.reference-home .ref-testimonials h2{font-size:37px}.reference-home .ref-service h3{font-size:24px}.reference-home .ref-case h3,.reference-home .ref-article-grid h3{font-size:25px}.reference-home .ref-section-top p,.reference-home .ref-about p,.reference-home .ref-service p,.reference-home .ref-process-grid p{font-size:13px}.reference-home .ref-final-cta h2{font-size:46px}}

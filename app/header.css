@@ -1,0 +1,26 @@
+/* One breakpoint controls desktop navigation and the modal sidebar. */
+.lh-header{position:sticky;top:0;z-index:60;height:80px;background:#fffffff5;border-bottom:1px solid #dfe8f1;box-shadow:0 3px 18px #15395908;backdrop-filter:blur(14px)}
+.lh-header .lh-nav{width:min(88%,1240px);height:80px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.lh-header .lh-nav-links{position:static;display:flex;margin:0 auto;padding:0;gap:30px;background:none;box-shadow:none;border:0;align-items:center}
+.lh-header .lh-nav-links>a{position:relative;padding:28px 0;font:600 13px/1.5 var(--ip-font-body,Arial,sans-serif);white-space:nowrap;color:#435b74}
+.lh-header .lh-nav-links>a:hover,.lh-header .lh-nav-links>a[aria-current="page"]{color:#087cff}
+.lh-header .lh-nav-links>a[aria-current]:after{position:absolute;bottom:17px;left:0;margin:0;width:100%;height:2px;background:#087cff;border-radius:2px}
+.lh-header .nv-nav-actions{display:flex;align-items:center;margin:0;gap:14px}
+.lh-header .ref-header-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:6px;background:#087cff;color:#fff;font:600 12px/1.5 var(--ip-font-body,Arial,sans-serif);padding:12px 20px;white-space:nowrap}
+.lh-header .ref-header-cta svg{width:16px;height:16px}
+.lh-header .lh-menu-toggle{display:none!important}
+.lh-header a:focus-visible,.lh-header button:focus-visible,.ip-nav-drawer :is(a,button):focus-visible{outline:3px solid #359aff;outline-offset:5px}
+.ip-nav-drawer{position:fixed;inset:0 0 0 auto;margin:0;padding:28px;width:min(390px,90vw);max-width:none;height:100dvh;max-height:none;border:0;border-left:1px solid #dfebf6;background:#f8fbff;color:#18334f;box-shadow:-20px 0 70px #001a3930;font-family:var(--ip-font-body,Arial,sans-serif);overflow-y:auto;overscroll-behavior:contain;box-sizing:border-box}
+.ip-nav-drawer[open]{display:flex;flex-direction:column;animation:ip-drawer-enter .22s ease-out}
+.ip-nav-drawer::backdrop{background:#061c3d80;backdrop-filter:blur(3px)}
+.ip-nav-drawer *{box-sizing:border-box}.ip-drawer-top{display:flex;align-items:center;justify-content:space-between;gap:20px}.ip-drawer-top .lh-logo{font-size:29px}.ip-drawer-top .lh-logo svg{width:24px;height:30px}
+.ip-drawer-close{display:grid;place-items:center;width:40px;height:40px;border:1px solid #d7e5f2;border-radius:50%;background:white;color:#355878;cursor:pointer;flex-shrink:0}.ip-drawer-close svg{width:20px;height:20px}
+.ip-drawer-tagline{font-size:12px;line-height:1.6;color:#74899f;margin:16px 0 30px}
+.ip-nav-drawer nav{display:grid;border-top:1px solid #dce7f2}
+.ip-nav-drawer nav>a{display:flex;align-items:center;gap:13px;padding:18px 4px;border-bottom:1px solid #dce7f2;color:#253f59;font-size:17px;line-height:1.5;text-decoration:none}
+.ip-nav-drawer nav>a:hover,.ip-nav-drawer nav>a[aria-current="page"]{color:#087cff}
+.ip-drawer-bottom{margin-top:auto;padding-top:36px;display:grid;gap:15px}.ip-drawer-bottom p{font:400 25px/1.2 Georgia,serif;letter-spacing:-.5px;margin:0;color:#18334f}.ip-drawer-cta{display:flex;align-items:center;justify-content:space-between;background:#087cff;color:#fff;padding:15px 18px;border-radius:6px;font-size:14px;font-weight:600;text-decoration:none}.ip-drawer-cta svg{width:18px;height:18px}.ip-drawer-bottom>a:last-child{color:#66829f;font-size:13px;text-decoration:none}
+@keyframes ip-drawer-enter{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:1024px){.lh-header{position:relative;top:auto;height:72px}.lh-header .lh-nav{width:88%;height:72px;gap:16px}.lh-header .lh-nav-links{display:none!important}.lh-header .nv-nav-actions{margin-left:auto}.lh-header .ref-header-cta{display:none!important}.lh-header .lh-menu-toggle{display:grid!important;place-items:center;width:44px!important;height:44px!important;padding:10px!important;border:1px solid #d9e7f4!important;border-radius:7px!important;background:#f0f6fd!important;color:#1769c5!important;cursor:pointer}.lh-header .lh-menu-toggle:before,.lh-header .lh-menu-toggle:after{display:none!important;content:none}.lh-header .lh-menu-toggle svg{display:block;width:22px;height:22px}.lh-header .lh-logo{font-size:29px}}
+@media(max-width:380px){.ip-nav-drawer{padding:22px}.ip-nav-drawer nav>a{padding-block:15px}}
+@media(prefers-reduced-motion:reduce){.ip-nav-drawer[open]{animation:none}}

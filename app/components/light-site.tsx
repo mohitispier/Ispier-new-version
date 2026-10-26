@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
-import { services } from "../content";
+import { useEffect, useRef, useState } from "react";
 export function LightArrow({ diagonal = false }: { diagonal?: boolean }) {
  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={diagonal ? "M6 18 18 6M6 6h12v12" : "M4 12h15m-5-5 5 5-5 5"} /></svg>;
 }
@@ -11,13 +10,22 @@ export function LightLogo() {
 }
 const navigation = [["Home","/"],["About","/about"],["Services","/services"],["Case Studies","/case-studies"],["Blog","/blogs"],["Contact","/contact"]];
 export function LightHeader() {
- const pathname=usePathname();
- const drawer=useRef<HTMLDialogElement>(null), search=useRef<HTMLDialogElement>(null);
- const [open,setOpen]=useState(false),[query,setQuery]=useState("");
- function close(){drawer.current?.close();setOpen(false);}
- return <><div className="nv-topbar"><div className="nv-wrap"><div><span><span aria-hidden="true">&#9906;</span> Ispier Tech Pvt Ltd, India</span><i/><a href="mailto:hello@ispier.com"><span aria-hidden="true">&#9993;</span> hello@ispier.com</a></div><div className="nv-top-social"><a href="https://www.linkedin.com/" aria-label="LinkedIn">in</a><a href="https://x.com/" aria-label="X">X</a><a href="https://www.instagram.com/" aria-label="Instagram">&#9678;</a><i/><span>English</span></div></div></div><header className="lh-header"><div className="nv-wrap lh-nav"><Link href="/" aria-label="Ispier home"><LightLogo/></Link><nav className="lh-nav-links" aria-label="Main navigation">{navigation.map(([label,href])=><Link href={href} key={href} aria-current={pathname===href?"page":undefined}>{label}{["/services","/pricing","/case-studies","/blogs"].includes(href)&&<span aria-hidden="true">&#8964;</span>}</Link>)}</nav><div className="nv-nav-actions"><Link href="/contact" className="ref-header-cta">Get Started <LightArrow/></Link><button aria-label="Search the website" onClick={()=>search.current?.showModal()}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg></button><button className="lh-menu-toggle" aria-label="Open navigation" aria-expanded={open} aria-controls="nv-site-drawer" onClick={()=>{drawer.current?.showModal();setOpen(true);}}><span/><span/><span/></button></div></div></header>
- <dialog ref={drawer} id="nv-site-drawer" className="nv-drawer" onClose={()=>setOpen(false)} onClick={e=>{if(e.target===e.currentTarget)close();}}><button className="nv-close" aria-label="Close navigation" onClick={close}>&times;</button><LightLogo/><p>Strategy. Creativity. Growth.</p><nav aria-label="Expanded navigation">{navigation.map(([label,href])=><Link href={href} key={href} onClick={close} aria-current={pathname===href?"page":undefined}>{label}<LightArrow/></Link>)}</nav><h3>Let&apos;s talk about your next chapter.</h3><a className="nv-drawer-email" href="mailto:hello@ispier.com">hello@ispier.com</a><Link href="/contact" className="nv-button" onClick={close}>Get a Quote <LightArrow/></Link></dialog>
- <dialog ref={search} className="nv-search-dialog" onClick={e=>{if(e.target===e.currentTarget)search.current?.close();}}><button className="nv-close" aria-label="Close search" onClick={()=>search.current?.close()}>&times;</button><span className="nv-kicker">Find your way</span><h2>What are you looking for?</h2><label htmlFor="nv-search">Search pages and services</label><input id="nv-search" type="search" autoComplete="off" placeholder="Try SEO, pricing or contact..." value={query} onChange={e=>setQuery(e.target.value)}/><div className="nv-search-results">{[...navigation.map(([name,href])=>({name,href})),...services.map(s=>({name:s.name,href:"/services#"+s.id}))].filter(item=>item.name.toLowerCase().includes(query.trim().toLowerCase())).slice(0,9).map(item=><Link key={item.href} href={item.href} onClick={()=>search.current?.close()}>{item.name}<LightArrow/></Link>)}{query&&!([...navigation.map(([name])=>name),...services.map(s=>s.name)].some(name=>name.toLowerCase().includes(query.trim().toLowerCase())))&&<p>No matches. Try a service name or <Link href="/contact" onClick={()=>search.current?.close()}>contact us</Link>.</p>}</div></dialog></>;
+ const pathname = usePathname();
+ const drawer = useRef<HTMLDialogElement>(null);
+ const [open, setOpen] = useState(false);
+ function close() { drawer.current?.close(); setOpen(false); }
+ function show() { if (!drawer.current?.open) drawer.current?.showModal(); setOpen(true); }
+ useEffect(() => {
+  if (!open) return;
+  const previousOverflow = document.body.style.overflow;
+  document.body.style.overflow = "hidden";
+  const desktop = window.matchMedia("(min-width: 1025px)");
+  function onDesktop(event: MediaQueryListEvent) { if(event.matches) { drawer.current?.close(); setOpen(false); } }
+  desktop.addEventListener("change", onDesktop);
+  return () => { document.body.style.overflow = previousOverflow; desktop.removeEventListener("change", onDesktop); };
+ }, [open]);
+ return <><header className="lh-header"><div className="nv-wrap lh-nav"><Link href="/" aria-label="Ispier home"><LightLogo/></Link><nav className="lh-nav-links" aria-label="Main navigation">{navigation.map(([label,href])=><Link href={href} key={href} aria-current={pathname===href?"page":undefined}>{label}</Link>)}</nav><div className="nv-nav-actions"><Link href="/contact" className="ref-header-cta">Get Started <LightArrow/></Link><button type="button" className="lh-menu-toggle" aria-label="Open navigation" aria-haspopup="dialog" aria-expanded={open} aria-controls="nv-site-drawer" onClick={show}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div></div></header>
+ <dialog ref={drawer} id="nv-site-drawer" className="ip-nav-drawer" aria-label="Site navigation" onClose={()=>setOpen(false)} onCancel={()=>setOpen(false)} onClick={event=>{if(event.target!==event.currentTarget)return;const rect=event.currentTarget.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)close();}}><div className="ip-drawer-top"><Link href="/" aria-label="Ispier home" onClick={close}><LightLogo/></Link><button type="button" className="ip-drawer-close" aria-label="Close navigation" autoFocus onClick={close}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><p className="ip-drawer-tagline">Strategy. Creativity. Growth.</p><nav aria-label="Mobile and tablet navigation">{navigation.map(([label,href])=><Link href={href} key={href} onClick={close} aria-current={pathname===href?"page":undefined}>{label}</Link>)}</nav><div className="ip-drawer-bottom"><p>Have something in mind?</p><Link href="/contact" className="ip-drawer-cta" onClick={close}>Let&apos;s talk <LightArrow/></Link><a href="mailto:hello@ispier.com">hello@ispier.com</a></div></dialog></>;
 }
 function NewsletterRequest(){
  const [ready,setReady]=useState(false);
