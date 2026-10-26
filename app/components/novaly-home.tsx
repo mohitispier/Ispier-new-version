@@ -4,31 +4,445 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { testimonials } from "../content";
+import { blogPosts } from "../blog-posts";
+import { caseStudies } from "../case-study-data";
 import { LightArrow } from "./light-site";
 import { ServiceIcon } from "./site";
 import { ExploreServices, AdvisorsSection } from "./home-extras";
 
-const serviceSet = [["digital", "Digital Strategy", "Data-backed strategies to help you reach the right people and grow with purpose."], ["social", "Social Media Marketing", "Build your community, boost engagement and turn followers into customers."], ["seo", "SEO & Content", "Get found, build trust and drive organic traffic with high-quality content."], ["ppc", "Paid Advertising", "Maximize your ROI with targeted campaigns across Google, Meta and more."]] as const;
-const stories = [["SEO", "Boosting Organic Traffic for a SaaS Brand", "+210%", "Increase in organic traffic", "/images/analytics.jpg"], ["SOCIAL MEDIA", "Building a Stronger Community for a Lifestyle Brand", "+450%", "Social media engagement", "/images/creative-meeting.jpg"], ["PAID ADS", "Driving Sales for a D2C Skincare Brand", "+320%", "ROAS improvement", "/images/strategy.jpg"]] as const;
-const articles = [["MARKETING", "Start with the conversation, not the campaign", "/images/analytics.jpg"], ["BRANDING", "Build a reputation people can verify", "/images/strategy.jpg"], ["STRATEGY", "SEO Trends You Need to Know This Year", "/images/business-meeting.jpg"]] as const;
-function ArrowLink({ href, children }: { href: string; children: React.ReactNode }) { return <Link className="ref-arrow-link" href={href}>{children} <LightArrow /></Link>; }
+const serviceSet = [
+  [
+    "digital",
+    "Digital Strategy",
+    "Data-backed strategies to help you reach the right people and grow with purpose.",
+  ],
+  [
+    "social",
+    "Social Media Marketing",
+    "Build your community, boost engagement and turn followers into customers.",
+  ],
+  [
+    "seo",
+    "SEO & Content",
+    "Get found, build trust and drive organic traffic with high-quality content.",
+  ],
+  [
+    "ppc",
+    "Paid Advertising",
+    "Maximize your ROI with targeted campaigns across Google, Meta and more.",
+  ],
+] as const;
+const stories = caseStudies.slice(0,3).map(study=>[study.category,study.title,study.metrics[0].value,study.metrics[0].label,study.image,study.slug] as const);
+const articles = blogPosts.map(post=>[post.category,post.title,post.image] as const);
+function ArrowLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link className="ref-arrow-link" href={href}>
+      {children} <LightArrow />
+    </Link>
+  );
+}
 export default function NovalyHome() {
- const [quote, setQuote] = useState(0); const review = testimonials[quote];
- return <div className="reference-home">
-  <section className="ref-hero"><Image src="/images/ispier-team-hero-v2.png" alt="Ispier team planning a marketing campaign" fill priority sizes="100vw"/><div className="ref-hero-overlay"/><div className="ref-wrap ref-hero-copy"><span className="ref-kicker">STRATEGY <b>/</b> CREATIVE <b>/</b> GROWTH</span><h1><span>Marketing that</span><span>moves your</span><em>business forward.</em></h1><p>At Ispier, we craft data-driven marketing strategies that build brands, attract the right audience and drive sustainable growth.</p><div className="ref-hero-actions"><Link href="/contact" className="ref-button">Work With Us <LightArrow/></Link><Link href="/case-studies" className="ref-watch">Explore Our Work <LightArrow/></Link></div><div className="ref-hero-proof"><div><strong>150+</strong><span>Happy clients</span></div><div><strong>300+</strong><span>Campaigns delivered</span></div><div><strong>5+ years</strong><span>Of making brands grow</span></div></div></div></section>
-  <section className="ref-services ref-section" id="services"><div className="ref-wrap"><div className="ref-section-top"><div><span className="ref-kicker">OUR SERVICES</span><h2>End-to-End Marketing<br/>Solutions for Modern Brands</h2><p>From strategy to execution, we help you connect with your audience, build engagement and achieve sustainable growth.</p></div><ArrowLink href="/services">View All Services</ArrowLink></div><div className="ref-service-grid">{serviceSet.map(([id,title,text])=><Link href={id === "digital" ? "/services" : `/services#${id}`} className="ref-service" key={id}><span><ServiceIcon id={id}/></span><h3>{title}</h3><p>{text}</p><span className="ref-service-more">Explore service <LightArrow/></span></Link>)}</div></div></section>
-  <ExploreServices/>
-  <section className="ref-about ref-section"><div className="ref-wrap ref-about-grid"><div><span className="ref-kicker">ABOUT ISPIER</span><h2>We&apos;re a Marketing<br/>Company with a Purpose</h2><p>Ispier is a full-service marketing agency helping ambitious brands grow through strategy, creativity and technology. We combine human insight and smart campaigns that make an impact — and deliver real business results.</p><ul className="ref-about-values"><li>Strategy built around your goals</li><li>Creative thinking. Measurable progress.</li><li>A team that works as part of yours</li></ul><Link href="/about" className="ref-button">Meet Ispier <LightArrow/></Link></div><div className="ref-about-image"><Image src="/images/ispier-office-reference-v2.png" alt="Ispier office and meeting room" fill sizes="(max-width: 760px) 90vw, 45vw"/><i/></div></div></section>
-  <section className="ref-impact"><div className="ref-wrap"><span className="ref-kicker">OUR IMPACT</span><h2>Numbers That Speak</h2><div className="ref-impact-grid">{[["150+","Happy Clients","Trusted by brands across industries."],["300+","Successful Campaigns","From awareness to conversions."],["5+","Years of Experience","Delivering results since day one."],["98%","Client Satisfaction","Long-term partnerships that grow."]].map(([n,t,d])=><article key={t}><strong>{n}</strong><h3>{t}</h3><p>{d}</p></article>)}</div></div></section>
-  <section className="ref-partnership" aria-labelledby="ref-partnership-title">
-   <div className="ref-partnership-visual"><Image src="/images/ispier-partnership-workshop.webp" alt="Illustrative creative workshop with two colleagues reviewing campaign ideas" fill sizes="(max-width:760px) 100vw, 50vw"/><div className="ref-partnership-image-shade"/><span>Better ideas.<br/>Built together.</span></div>
-   <div className="ref-partnership-copy"><span className="ref-kicker">A PARTNER IN YOUR GROWTH</span><h2 id="ref-partnership-title">Your ambition.<br/>Our shared focus.</h2><p>Great marketing starts with understanding your business. We bring fresh thinking, clear communication and a team that cares about where you go next.</p><ol className="ref-partnership-points">{[["A team that listens","Your goals, challenges and audience shape the way we think about your brand."],["Ideas with a purpose","Strategy and creativity come together to make every campaign feel connected."],["Clarity at every step","Stay close to the work with honest conversations, clear priorities and useful insights."]].map(([title,text],i)=><li key={title}><span aria-hidden="true">0{i+1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol><Link href="/approach" className="ref-partnership-link">Get to know our approach <LightArrow/></Link></div>
-  </section>
-  <section className="ref-work ref-section"><div className="ref-wrap"><div className="ref-section-top ref-small-title"><div><span className="ref-kicker">FEATURED WORK</span><h2>Case Studies</h2><p>Real brands. Real strategies. Real results.</p></div><ArrowLink href="/case-studies">View All Case Studies</ArrowLink></div><div className="ref-work-grid">{stories.map(([tag,title,result,caption,image])=><Link key={title} href="/case-studies" className="ref-case"><div className="ref-case-image"><Image src={image} alt="Marketing case study" fill loading="eager" sizes="(max-width:760px) 90vw, 30vw"/></div><div className="ref-case-body"><span>{tag}</span><h3>{title}</h3><strong>{result}</strong><p>{caption}</p><i><LightArrow/></i></div></Link>)}</div></div></section>
-  <AdvisorsSection/>
-  <section className="ref-testimonials"><div className="ref-wrap ref-testimonial-grid"><div><span className="ref-kicker">TESTIMONIALS</span><h2>What Our Clients Say</h2><span className="ref-quote" aria-hidden="true">&ldquo;</span><blockquote aria-live="polite" aria-atomic="true">{review.text}</blockquote><div className="ref-person"><span className={`ref-person-image p${quote}`}/><div><strong>{review.name}</strong><p>{review.role}</p></div></div></div><div className="ref-video"><Image src="/images/collaboration.jpg" alt="Client story" fill loading="eager" sizes="(max-width:760px) 90vw, 42vw"/><span className="ref-story-caption">Good work starts with a great partnership.</span><button className="ref-slide-arrow prev" aria-label="Previous testimonial" onClick={()=>setQuote((quote+testimonials.length-1)%testimonials.length)}>&larr;</button><button className="ref-slide-arrow next" aria-label="Next testimonial" onClick={()=>setQuote((quote+1)%testimonials.length)}>&rarr;</button><div className="ref-dots">{testimonials.map((_,i)=><button key={i} aria-label={`Show testimonial ${i+1}`} aria-pressed={i===quote} onClick={()=>setQuote(i)}/>)}</div></div></div></section>
-  <section className="ref-insights ref-section"><div className="ref-wrap"><div className="ref-section-top ref-small-title"><div><span className="ref-kicker">LATEST FROM OUR BLOG</span><h2>Insights, Trends &amp; Ideas</h2></div><ArrowLink href="/blogs">View All Posts</ArrowLink></div><div className="ref-article-grid">{articles.map(([tag,title,image],i)=><article key={title}><Link href={`/blogs#insight-${i+1}`} className="ref-article-image"><Image src={image} alt="Marketing insight" fill loading="eager" sizes="(max-width:760px) 90vw, 30vw"/></Link><div><span>{tag}</span><h3><Link href={`/blogs#insight-${i+1}`}>{title}</Link></h3><ArrowLink href={`/blogs#insight-${i+1}`}>Read More</ArrowLink></div></article>)}</div></div></section>
-  <section className="ref-process ref-section" aria-labelledby="ref-process-title"><div className="ref-wrap"><div className="ref-section-top"><div><span className="ref-kicker">HOW WE WORK</span><h2 id="ref-process-title">A clear plan.<br/>A shared ambition.</h2></div><p>From the first conversation to the next milestone, we keep your goals at the centre of every decision.</p></div><ol className="ref-process-grid">{[["Discover","We get to know your brand, your audience and what success looks like for you."],["Build","We bring strategy, content and channels together into a focused marketing plan."],["Launch & learn","We put the plan to work, track what matters and refine as your business grows."]].map(([title,text],i)=><li key={title}><span className="ref-process-number">0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol><Link className="ref-process-link" href="/contact">Tell us what you&apos;re working on <LightArrow/></Link></div></section>
-  <section className="ref-final-cta"><div className="ref-wrap"><div><span className="ref-kicker">LET&apos;S GROW TOGETHER</span><h2>Your Growth. Our Mission.</h2><p>Ready to take your brand to the next level? Let&apos;s create something great together.</p></div><Link href="/contact" className="ref-button">Get in Touch <LightArrow/></Link></div></section>
- </div>;
+  const [quote, setQuote] = useState(0);
+  const review = testimonials[quote];
+  return (
+    <div className="reference-home">
+      <section className="ref-hero">
+        <Image
+          src="/images/ispier-team-hero-v2.png"
+          alt="Ispier team planning a marketing campaign"
+          fill
+          priority
+          sizes="100vw"
+        />
+        <div className="ref-hero-overlay" />
+        <div className="ref-wrap ref-hero-copy">
+          <span className="ref-kicker">
+            STRATEGY <b>/</b> CREATIVE <b>/</b> GROWTH
+          </span>
+          <h1>
+            <span>Marketing that</span>
+            <span>moves your</span>
+            <em>business forward.</em>
+          </h1>
+          <p>
+            At Ispier, we craft data-driven marketing strategies that build
+            brands, attract the right audience and drive sustainable growth.
+          </p>
+          <div className="ref-hero-actions">
+            <Link href="/contact" className="ref-button">
+              Work With Us <LightArrow />
+            </Link>
+            <Link href="/case-studies" className="ref-watch">
+              Explore Our Work <LightArrow />
+            </Link>
+          </div>
+          <div className="ref-hero-proof">
+            <div>
+              <strong>150+</strong>
+              <span>Happy clients</span>
+            </div>
+            <div>
+              <strong>300+</strong>
+              <span>Campaigns delivered</span>
+            </div>
+            <div>
+              <strong>5+ years</strong>
+              <span>Of making brands grow</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="ref-services ref-section" id="services">
+        <div className="ref-wrap">
+          <div className="ref-section-top">
+            <div>
+              <span className="ref-kicker">OUR SERVICES</span>
+              <h2><Link href="/services">End-to-End Marketing<br/>Solutions for Modern Brands</Link></h2>
+              <p>
+                From strategy to execution, we help you connect with your
+                audience, build engagement and achieve sustainable growth.
+              </p>
+            </div>
+            <ArrowLink href="/services">View All Services</ArrowLink>
+          </div>
+          <div className="ref-service-grid">
+            {serviceSet.map(([id, title, text]) => (
+              <Link
+                href={`/services/${id}`}
+                className="ref-service"
+                key={id}
+              >
+                <span>
+                  <ServiceIcon id={id} />
+                </span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <span className="ref-service-more">
+                  Explore service <LightArrow />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <ExploreServices />
+      <section className="ref-about ref-section">
+        <div className="ref-wrap ref-about-grid">
+          <div>
+            <span className="ref-kicker">ABOUT ISPIER</span>
+            <h2><Link href="/about">We&apos;re a Marketing<br/>Company with a Purpose</Link></h2>
+            <p>
+              Ispier is a full-service marketing agency helping ambitious brands
+              grow through strategy, creativity and technology. We combine human
+              insight and smart campaigns that make an impact — and deliver real
+              business results.
+            </p>
+            <ul className="ref-about-values">
+              <li>Strategy built around your goals</li>
+              <li>Creative thinking. Measurable progress.</li>
+              <li>A team that works as part of yours</li>
+            </ul>
+            <Link href="/about" className="ref-button">
+              Meet Ispier <LightArrow />
+            </Link>
+          </div>
+          <Link href="/about" className="ref-about-image" aria-label="Learn about Ispier">
+            <Image
+              src="/images/ispier-office-reference-v2.png"
+              alt="Ispier office and meeting room"
+              fill
+              sizes="(max-width: 760px) 90vw, 45vw"
+            />
+            <i />
+          </Link>
+        </div>
+      </section>
+      <section className="ref-impact">
+        <div className="ref-wrap">
+          <span className="ref-kicker">OUR IMPACT</span>
+          <h2><Link href="/case-studies">Numbers That Speak</Link></h2>
+          <div className="ref-impact-grid">
+            {[
+              ["150+", "Happy Clients", "Trusted by brands across industries."],
+              [
+                "300+",
+                "Successful Campaigns",
+                "From awareness to conversions.",
+              ],
+              [
+                "5+",
+                "Years of Experience",
+                "Delivering results since day one.",
+              ],
+              [
+                "98%",
+                "Client Satisfaction",
+                "Long-term partnerships that grow.",
+              ],
+            ].map(([n, t, d]) => (
+              <article key={t}>
+                <strong>{n}</strong>
+                <h3>{t}</h3>
+                <p>{d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section
+        className="ref-partnership"
+        aria-labelledby="ref-partnership-title"
+      >
+        <Link href="/approach" className="ref-partnership-visual" aria-label="Discover the Ispier approach">
+          <Image
+            src="/images/ispier-partnership-workshop.webp"
+            alt="Illustrative creative workshop with two colleagues reviewing campaign ideas"
+            fill
+            sizes="(max-width:760px) 100vw, 50vw"
+          />
+          <div className="ref-partnership-image-shade" />
+          <span>
+            Better ideas.
+            <br />
+            Built together.
+          </span>
+        </Link>
+        <div className="ref-partnership-copy">
+          <span className="ref-kicker">A PARTNER IN YOUR GROWTH</span>
+          <h2 id="ref-partnership-title"><Link href="/approach">Your ambition.<br/>Our shared focus.</Link></h2>
+          <p>
+            Great marketing starts with understanding your business. We bring
+            fresh thinking, clear communication and a team that cares about
+            where you go next.
+          </p>
+          <ol className="ref-partnership-points">
+            {[
+              [
+                "A team that listens",
+                "Your goals, challenges and audience shape the way we think about your brand.",
+              ],
+              [
+                "Ideas with a purpose",
+                "Strategy and creativity come together to make every campaign feel connected.",
+              ],
+              [
+                "Clarity at every step",
+                "Stay close to the work with honest conversations, clear priorities and useful insights.",
+              ],
+            ].map(([title, text], i) => (
+              <li key={title}>
+                <span aria-hidden="true">0{i + 1}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <Link href="/approach" className="ref-partnership-link">
+            Get to know our approach <LightArrow />
+          </Link>
+        </div>
+      </section>
+      <section className="ref-work ref-section">
+        <div className="ref-wrap">
+          <div className="ref-section-top ref-small-title">
+            <div>
+              <span className="ref-kicker">FEATURED WORK</span>
+              <h2><Link href="/case-studies">Case Studies</Link></h2>
+              <p>Real brands. Real strategies. Real results.</p>
+            </div>
+            <ArrowLink href="/case-studies">View All Case Studies</ArrowLink>
+          </div>
+          <div className="ref-work-grid">
+            {stories.map(([tag, title, result, caption, image, slug]) => (
+              <Link key={title} href={"/case-studies/"+slug} className="ref-case">
+                <div className="ref-case-image">
+                  <Image
+                    src={image}
+                    alt="Marketing case study"
+                    fill
+                    loading="eager"
+                    sizes="(max-width:760px) 90vw, 30vw"
+                  />
+                </div>
+                <div className="ref-case-body">
+                  <span>{tag}</span>
+                  <h3>{title}</h3>
+                  <strong>{result}</strong>
+                  <p>{caption}</p>
+                  <i>
+                    <LightArrow />
+                  </i>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <AdvisorsSection />
+      <section className="ref-testimonials">
+        <div className="ref-wrap ref-testimonial-grid">
+          <div>
+            <span className="ref-kicker">TESTIMONIALS</span>
+            <h2><Link href="/case-studies">What Our Clients Say</Link></h2>
+            <span className="ref-quote" aria-hidden="true">
+              &ldquo;
+            </span>
+            <blockquote aria-live="polite" aria-atomic="true">
+              {review.text}
+            </blockquote>
+            <div className="ref-person">
+              <span className={`ref-person-image p${quote}`} />
+              <div>
+                <strong>{review.name}</strong>
+                <p>{review.role}</p>
+              </div>
+            </div>
+          </div>
+          <div className="ref-video">
+            <Image
+              src="/images/collaboration.jpg"
+              alt="Client story"
+              fill
+              loading="eager"
+              sizes="(max-width:760px) 90vw, 42vw"
+            />
+            <span className="ref-story-caption">
+              Good work starts with a great partnership.
+            </span>
+            <button
+              className="ref-slide-arrow prev"
+              aria-label="Previous testimonial"
+              onClick={() =>
+                setQuote(
+                  (quote + testimonials.length - 1) % testimonials.length,
+                )
+              }
+            >
+              &larr;
+            </button>
+            <button
+              className="ref-slide-arrow next"
+              aria-label="Next testimonial"
+              onClick={() => setQuote((quote + 1) % testimonials.length)}
+            >
+              &rarr;
+            </button>
+            <div className="ref-dots">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  aria-label={`Show testimonial ${i + 1}`}
+                  aria-pressed={i === quote}
+                  onClick={() => setQuote(i)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="ref-insights ref-section">
+        <div className="ref-wrap">
+          <div className="ref-section-top ref-small-title">
+            <div>
+              <span className="ref-kicker">LATEST FROM OUR BLOG</span>
+              <h2><Link href="/blogs">Insights, Trends &amp; Ideas</Link></h2>
+            </div>
+            <ArrowLink href="/blogs">View All Posts</ArrowLink>
+          </div>
+          <div className="ref-article-grid">
+            {articles.map(([tag, title, image], i) => (
+              <article key={title}>
+                <Link
+                  href={`/blog/${blogPosts[i].slug}`}
+                  className="ref-article-image"
+                >
+                  <Image
+                    src={image}
+                    alt="Marketing insight"
+                    fill
+                    loading="eager"
+                    sizes="(max-width:760px) 90vw, 30vw"
+                  />
+                </Link>
+                <div>
+                  <span>{tag}</span>
+                  <h3>
+                    <Link href={`/blog/${blogPosts[i].slug}`}>{title}</Link>
+                  </h3>
+                  <ArrowLink href={`/blog/${blogPosts[i].slug}`}>
+                    Read More
+                  </ArrowLink>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section
+        className="ref-process ref-section"
+        aria-labelledby="ref-process-title"
+      >
+        <div className="ref-wrap">
+          <div className="ref-section-top">
+            <div>
+              <span className="ref-kicker">HOW WE WORK</span>
+              <h2 id="ref-process-title"><Link href="/approach">A clear plan.<br/>A shared ambition.</Link></h2>
+            </div>
+            <p>
+              From the first conversation to the next milestone, we keep your
+              goals at the centre of every decision.
+            </p>
+          </div>
+          <ol className="ref-process-grid">
+            {[
+              [
+                "Discover",
+                "We get to know your brand, your audience and what success looks like for you.",
+              ],
+              [
+                "Build",
+                "We bring strategy, content and channels together into a focused marketing plan.",
+              ],
+              [
+                "Launch & learn",
+                "We put the plan to work, track what matters and refine as your business grows.",
+              ],
+            ].map(([title, text], i) => (
+              <li key={title}>
+                <span className="ref-process-number">0{i + 1}</span>
+                <h3><Link href="/approach">{title}</Link></h3>
+                <p>{text}</p>
+              </li>
+            ))}
+          </ol>
+          <Link className="ref-process-link" href="/approach">
+            Explore our full approach <LightArrow />
+          </Link>
+        </div>
+      </section>
+      <section className="ref-final-cta">
+        <div className="ref-wrap">
+          <div>
+            <span className="ref-kicker">LET&apos;S GROW TOGETHER</span>
+            <h2>Your Growth. Our Mission.</h2>
+            <p>
+              Ready to take your brand to the next level? Let&apos;s create
+              something great together.
+            </p>
+          </div>
+          <Link href="/contact" className="ref-button">
+            Get in Touch <LightArrow />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
 }

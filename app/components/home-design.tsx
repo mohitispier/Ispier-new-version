@@ -277,23 +277,119 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 function OrbitArt({ variant = "about" }: { variant?: "about" | "results" }) {
   const id = "ip-orbit-" + variant;
-  return <svg className="ip-orbit-art" viewBox="0 0 640 340" fill="none" aria-hidden="true">
-    <defs>
-      <linearGradient id={id} x1="50" y1="240" x2="580" y2="100" gradientUnits="userSpaceOnUse"><stop stopColor="#0066ff"/><stop offset=".32" stopColor="#00d9ff"/><stop offset=".58" stopColor="#0058ff"/><stop offset=".83" stopColor="#00c8ff"/><stop offset="1" stopColor="#0051e8"/></linearGradient>
-      <radialGradient id={id + "-aura"}><stop stopColor="#006aff" stopOpacity=".42"/><stop offset="1" stopColor="#006aff" stopOpacity="0"/></radialGradient>
-      <filter id={id + "-glow"} x="-70%" y="-100%" width="240%" height="300%"><feGaussianBlur stdDeviation="5"/></filter>
-      <filter id={id + "-star"} x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3"/></filter>
-    </defs>
-    <ellipse cx="330" cy="210" rx="290" ry="120" fill={"url(#" + id + "-aura)"}/>
-    <g stroke={"url(#" + id + ")"}>
-      <ellipse cx="325" cy="205" rx="275" ry="71" transform="rotate(-12 325 205)" strokeWidth="7" opacity=".8" filter={"url(#" + id + "-glow)"}/>
-      <ellipse cx="325" cy="205" rx="275" ry="71" transform="rotate(-12 325 205)" strokeWidth="1.7"/>
-      <ellipse cx="335" cy="207" rx="264" ry="65" transform="rotate(16 335 207)" strokeWidth="5" opacity=".65" filter={"url(#" + id + "-glow)"}/>
-      <ellipse cx="335" cy="207" rx="264" ry="65" transform="rotate(16 335 207)" strokeWidth="1.1"/>
-      <path d="M90 230C155 320 485 310 583 202M112 245C221 332 515 297 578 222" opacity=".5"/>
-    </g>
-    {[[76,205],[164,130],[556,176],[483,273],[252,286]].map(([x,y],i)=><g key={i}><circle cx={x} cy={y} r="10" fill="#008cff" filter={"url(#"+id+"-star)"}/><path d={`M${x-9} ${y}h18M${x} ${y-9}v18`} stroke="#00c8ff" strokeWidth="1"/><circle cx={x} cy={y} r="2.5" fill="#c6ffff"/></g>)}
-  </svg>;
+  return (
+    <svg
+      className="ip-orbit-art"
+      viewBox="0 0 640 340"
+      fill="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient
+          id={id}
+          x1="50"
+          y1="240"
+          x2="580"
+          y2="100"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#0066ff" />
+          <stop offset=".32" stopColor="#00d9ff" />
+          <stop offset=".58" stopColor="#0058ff" />
+          <stop offset=".83" stopColor="#00c8ff" />
+          <stop offset="1" stopColor="#0051e8" />
+        </linearGradient>
+        <radialGradient id={id + "-aura"}>
+          <stop stopColor="#006aff" stopOpacity=".42" />
+          <stop offset="1" stopColor="#006aff" stopOpacity="0" />
+        </radialGradient>
+        <filter id={id + "-glow"} x="-70%" y="-100%" width="240%" height="300%">
+          <feGaussianBlur stdDeviation="5" />
+        </filter>
+        <filter
+          id={id + "-star"}
+          x="-200%"
+          y="-200%"
+          width="500%"
+          height="500%"
+        >
+          <feGaussianBlur stdDeviation="3" />
+        </filter>
+      </defs>
+      <ellipse
+        cx="330"
+        cy="210"
+        rx="290"
+        ry="120"
+        fill={"url(#" + id + "-aura)"}
+      />
+      <g stroke={"url(#" + id + ")"}>
+        <ellipse
+          cx="325"
+          cy="205"
+          rx="275"
+          ry="71"
+          transform="rotate(-12 325 205)"
+          strokeWidth="7"
+          opacity=".8"
+          filter={"url(#" + id + "-glow)"}
+        />
+        <ellipse
+          cx="325"
+          cy="205"
+          rx="275"
+          ry="71"
+          transform="rotate(-12 325 205)"
+          strokeWidth="1.7"
+        />
+        <ellipse
+          cx="335"
+          cy="207"
+          rx="264"
+          ry="65"
+          transform="rotate(16 335 207)"
+          strokeWidth="5"
+          opacity=".65"
+          filter={"url(#" + id + "-glow)"}
+        />
+        <ellipse
+          cx="335"
+          cy="207"
+          rx="264"
+          ry="65"
+          transform="rotate(16 335 207)"
+          strokeWidth="1.1"
+        />
+        <path
+          d="M90 230C155 320 485 310 583 202M112 245C221 332 515 297 578 222"
+          opacity=".5"
+        />
+      </g>
+      {[
+        [76, 205],
+        [164, 130],
+        [556, 176],
+        [483, 273],
+        [252, 286],
+      ].map(([x, y], i) => (
+        <g key={i}>
+          <circle
+            cx={x}
+            cy={y}
+            r="10"
+            fill="#008cff"
+            filter={"url(#" + id + "-star)"}
+          />
+          <path
+            d={`M${x - 9} ${y}h18M${x} ${y - 9}v18`}
+            stroke="#00c8ff"
+            strokeWidth="1"
+          />
+          <circle cx={x} cy={y} r="2.5" fill="#c6ffff" />
+        </g>
+      ))}
+    </svg>
+  );
 }
 
 function GrowthLine() {
@@ -344,10 +440,16 @@ export default function DesignHome() {
         <div className="ip-wrap ip-hero-content">
           <span className="ip-pill">Your Brand. Our Strategy.</span>
           <h1 id="ip-title">
-            Boost Your Brand<br />Visibility &amp; Online<br /><span>Reputation</span>
+            Boost Your Brand
+            <br />
+            Visibility &amp; Online
+            <br />
+            <span>Reputation</span>
           </h1>
           <p>
-            We help businesses build a strong online presence through strategic marketing, content, and digital platforms &mdash; so you get noticed, trusted and chosen.
+            We help businesses build a strong online presence through strategic
+            marketing, content, and digital platforms &mdash; so you get
+            noticed, trusted and chosen.
           </p>
           <div className="ip-hero-buttons">
             <Link className="ip-button" href="/contact">
@@ -464,7 +566,7 @@ export default function DesignHome() {
           <div className="ip-service-grid">
             {offerings.map((service) => (
               <Link
-                href={"/services#" + service.id}
+                href={"/services/" + service.id}
                 key={service.id}
                 className="ip-service-card"
               >
@@ -490,14 +592,19 @@ export default function DesignHome() {
                 </span>
                 <h3>{service.name}</h3>
                 <p>{service.text}</p>
-                <span className="ip-learn">Learn More <Icon name="arrow" /></span>
+                <span className="ip-learn">
+                  Learn More <Icon name="arrow" />
+                </span>
               </Link>
             ))}
           </div>
         </div>
       </section>
       <section className="ip-section ip-why">
-        <div className="ip-wrap ip-why-grid"><div className="ip-results-orbit" aria-hidden="true"><OrbitArt variant="results" /></div>
+        <div className="ip-wrap ip-why-grid">
+          <div className="ip-results-orbit" aria-hidden="true">
+            <OrbitArt variant="results" />
+          </div>
           <div className="ip-why-copy">
             <Eyebrow>Why Choose Ispier</Eyebrow>
             <h2>
@@ -555,7 +662,23 @@ export default function DesignHome() {
               </i>
             </div>
           </div>
-          <div className="ip-real"><span className="ip-phone-camera" aria-hidden="true" /><DesignLogo /><div className="ip-phone-chart"><span className="ip-phone-label">Brand performance</span><strong>+250%</strong><GrowthLine /><span className="ip-phone-trend">Growing with trust</span></div><p>Real People.<br />Real Brands.<br /><em>Real Results.</em></p></div>
+          <div className="ip-real">
+            <span className="ip-phone-camera" aria-hidden="true" />
+            <DesignLogo />
+            <div className="ip-phone-chart">
+              <span className="ip-phone-label">Brand performance</span>
+              <strong>+250%</strong>
+              <GrowthLine />
+              <span className="ip-phone-trend">Growing with trust</span>
+            </div>
+            <p>
+              Real People.
+              <br />
+              Real Brands.
+              <br />
+              <em>Real Results.</em>
+            </p>
+          </div>
         </div>
       </section>
       <section className="ip-section ip-testimonials">
@@ -808,16 +931,36 @@ export function DesignFooter() {
           </Link>
           <p>Authentic Marketing. Sustainable Growth.</p>
           <div className="ip-socials">
-            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
               in
             </a>
-            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
+            <a
+              href="https://x.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X"
+            >
               𝕏
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
               <Icon name="instagram" />
             </a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <a
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
               <Icon name="play" />
             </a>
           </div>
@@ -839,7 +982,7 @@ export function DesignFooter() {
         <div>
           <h3>Our Services</h3>
           {offerings.map((item) => (
-            <Link key={item.id} href={"/services#" + item.id}>
+            <Link key={item.id} href={"/services/" + item.id}>
               {item.name}
             </Link>
           ))}

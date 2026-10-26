@@ -6,43 +6,528 @@ import { useRef } from "react";
 import { LightArrow, LightLogo } from "./light-site";
 
 export function LightIcon({ name }: { name: string }) {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{name === "seo" ? <><circle cx="10" cy="10" r="6"/><path d="m14.5 14.5 5 5M7 10h6m-3-3v6"/></> : name === "social" ? <><rect x="5" y="5" width="14" height="15" rx="3"/><path d="M3 15V4a2 2 0 0 1 2-2h11"/><circle cx="12" cy="11" r="2.5"/><path d="M8.5 18v-1a3.5 3.5 0 0 1 7 0v1"/></> : name === "ppc" ? <><circle cx="15" cy="8" r="5"/><path d="m2 20 4-11 7 7-11 4Zm5-5 3 3m6-13 1 3-3 1"/></> : name === "content" ? <><path d="M10 4H4v16h16v-6M9 15l1-4L19 2l3 3-9 9-4 1Z"/><path d="m16 5 3 3M7 8h2M7 11h1"/></> : name === "email" ? <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></> : name === "web" ? <><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m6 7 3 11 3-8 3 8 3-11M6 7h3m6 0h3"/></> : <><path d="m5 3 16 16-2 2L3 5l2-2Zm-2 16 6-6m5-5 5-5 2 2-5 5M3 19l2 2 4-4"/><circle cx="17.5" cy="5.5" r="3"/><circle cx="5.5" cy="17.5" r="3"/></>}</svg>;
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {name === "seo" ? (
+        <>
+          <circle cx="10" cy="10" r="6" />
+          <path d="m14.5 14.5 5 5M7 10h6m-3-3v6" />
+        </>
+      ) : name === "social" ? (
+        <>
+          <rect x="5" y="5" width="14" height="15" rx="3" />
+          <path d="M3 15V4a2 2 0 0 1 2-2h11" />
+          <circle cx="12" cy="11" r="2.5" />
+          <path d="M8.5 18v-1a3.5 3.5 0 0 1 7 0v1" />
+        </>
+      ) : name === "ppc" ? (
+        <>
+          <circle cx="15" cy="8" r="5" />
+          <path d="m2 20 4-11 7 7-11 4Zm5-5 3 3m6-13 1 3-3 1" />
+        </>
+      ) : name === "content" ? (
+        <>
+          <path d="M10 4H4v16h16v-6M9 15l1-4L19 2l3 3-9 9-4 1Z" />
+          <path d="m16 5 3 3M7 8h2M7 11h1" />
+        </>
+      ) : name === "email" ? (
+        <>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m3 6 9 7 9-7" />
+        </>
+      ) : name === "web" ? (
+        <>
+          <rect x="3" y="3" width="18" height="18" rx="4" />
+          <path d="m6 7 3 11 3-8 3 8 3-11M6 7h3m6 0h3" />
+        </>
+      ) : (
+        <>
+          <path d="m5 3 16 16-2 2L3 5l2-2Zm-2 16 6-6m5-5 5-5 2 2-5 5M3 19l2 2 4-4" />
+          <circle cx="17.5" cy="5.5" r="3" />
+          <circle cx="5.5" cy="17.5" r="3" />
+        </>
+      )}
+    </svg>
+  );
 }
-function Eyebrow({ children }: { children: React.ReactNode }) { return <span className="lh-eyebrow">{children}</span>; }
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <span className="lh-eyebrow">{children}</span>;
+}
 export function MountainCTA() {
-  return <section className="lh-mountain-cta"><Image src="/images/ispier-mountain-banner.webp" alt="A hiker looking across mountain ridges" fill sizes="100vw" /><div className="lh-wrap"><div><h2>Ready to Grow Your Brand?</h2><p>Let&apos;s create a digital marketing strategy that works for you.</p></div><Link href="/contact" className="lh-button lh-button-white">Get Started <LightArrow /></Link></div></section>;
+  return (
+    <section className="lh-mountain-cta">
+      <Image
+        src="/images/ispier-mountain-banner.webp"
+        alt="A hiker looking across mountain ridges"
+        fill
+        sizes="100vw"
+      />
+      <div className="lh-wrap">
+        <div>
+          <h2>Ready to Grow Your Brand?</h2>
+          <p>
+            Let&apos;s create a digital marketing strategy that works for you.
+          </p>
+        </div>
+        <Link href="/contact" className="lh-button lh-button-white">
+          Get Started <LightArrow />
+        </Link>
+      </div>
+    </section>
+  );
 }
-function Avatar({ index = 0 }: { index?: number }) { return <span className={"lh-avatar lh-avatar-"+index} aria-hidden="true" />; }
+function Avatar({ index = 0 }: { index?: number }) {
+  return <span className={"lh-avatar lh-avatar-" + index} aria-hidden="true" />;
+}
 const services = [
-  {id:"seo",name:"SEO",text:"Rank higher, get more traffic, and grow your organic reach."},
-  {id:"social",name:"Social Media Marketing",text:"Build your brand, engage your audience, and increase loyalty."},
-  {id:"ppc",name:"PPC Advertising",text:"Get instant visibility and high-quality leads."},
-  {id:"content",name:"Content Marketing",text:"Create valuable content that informs, engages and converts."},
-  {id:"email",name:"Email Marketing",text:"Nurture leads, boost retention and drive repeat business."},
-  {id:"web",name:"Website Development",text:"Build fast, modern and conversion-focused websites."},
+  {
+    id: "seo",
+    name: "SEO",
+    text: "Rank higher, get more traffic, and grow your organic reach.",
+  },
+  {
+    id: "social",
+    name: "Social Media Marketing",
+    text: "Build your brand, engage your audience, and increase loyalty.",
+  },
+  {
+    id: "ppc",
+    name: "PPC Advertising",
+    text: "Get instant visibility and high-quality leads.",
+  },
+  {
+    id: "content",
+    name: "Content Marketing",
+    text: "Create valuable content that informs, engages and converts.",
+  },
+  {
+    id: "email",
+    name: "Email Marketing",
+    text: "Nurture leads, boost retention and drive repeat business.",
+  },
+  {
+    id: "web",
+    name: "Website Development",
+    text: "Build fast, modern and conversion-focused websites.",
+  },
 ];
 const process = [
-  {title:"Discover & Plan",text:"Understand your goals, audience and market."},
-  {title:"Execute",text:"Implement targeted campaigns and optimize."},
-  {title:"Monitor & Optimize",text:"Track performance and make data-driven changes."},
-  {title:"Grow Together",text:"Scale your brand with long-term support."},
+  {
+    title: "Discover & Plan",
+    text: "Understand your goals, audience and market.",
+  },
+  { title: "Execute", text: "Implement targeted campaigns and optimize." },
+  {
+    title: "Monitor & Optimize",
+    text: "Track performance and make data-driven changes.",
+  },
+  { title: "Grow Together", text: "Scale your brand with long-term support." },
 ];
 const reviews = [
-  {quote:"Ispier's team helped us grow our organic traffic by 2.5x in just 6 months. Their strategy is clear, creative and result-driven.",name:"Sarah Mitchell",role:"Founder, NovaTech",avatar:0},
-  {quote:"Professional, creative and results-driven. I've worked with many agencies, but Ispier stands out.",name:"James Carter",role:"CEO, BrightLabs",avatar:1},
-  {quote:"The team is proactive, responsive and always delivers. Highly recommended!",name:"Emily Rodriguez",role:"Founder, PixelFlow",avatar:2},
+  {
+    quote:
+      "Ispier's team helped us grow our organic traffic by 2.5x in just 6 months. Their strategy is clear, creative and result-driven.",
+    name: "Sarah Mitchell",
+    role: "Founder, NovaTech",
+    avatar: 0,
+  },
+  {
+    quote:
+      "Professional, creative and results-driven. I've worked with many agencies, but Ispier stands out.",
+    name: "James Carter",
+    role: "CEO, BrightLabs",
+    avatar: 1,
+  },
+  {
+    quote:
+      "The team is proactive, responsive and always delivers. Highly recommended!",
+    name: "Emily Rodriguez",
+    role: "Founder, PixelFlow",
+    avatar: 2,
+  },
 ];
 function BrandStrip() {
-  return <section className="lh-brand-strip"><div className="lh-wrap"><span className="lh-brand-caption">Trusted by innovative brands worldwide</span><div className="lh-brand-logos" aria-label="Google, Meta, LinkedIn, HubSpot, Adobe, Shopify, Notion"><span className="lh-google">Google</span><span className="lh-meta"><svg viewBox="0 0 40 25" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true"><path d="M3 18C-1 3 8 0 14 8l13 13c10 7 14-6 8-15-5-8-9 0-14 7L13 23C3 28 1 19 3 13"/></svg>Meta</span><span className="lh-linkedin">Linked<span>in</span></span><span className="lh-hubspot">HubSpot<svg viewBox="0 0 25 25" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle cx="13" cy="12" r="4"/><path d="M13 8V2m3 12 6 5M10 9 4 3"/><circle cx="13" cy="2" r="1.5"/><circle cx="22" cy="20" r="1.5"/></svg></span><span className="lh-adobe"><svg viewBox="0 0 25 28" fill="currentColor" aria-hidden="true"><path d="M0 0h9L0 26V0Zm16 0h9v26L16 0Zm-4 13 6 15h-6l-2-5H6l6-10Z"/></svg>Adobe</span><span className="lh-shopify"><svg viewBox="0 0 25 28" fill="currentColor" aria-hidden="true"><path d="m4 7 15-3 4 22-21-2L4 7Zm4-1C8-1 16-1 16 5h-2c0-4-4-4-4 1H8Z"/><text x="8" y="21" fontSize="14" fontFamily="Georgia" fontWeight="bold" fill="#f0f7fa">S</text></svg>Shopify</span><span className="lh-notion"><b>N</b>Notion</span></div></div></section>;
+  return (
+    <section className="lh-brand-strip">
+      <div className="lh-wrap">
+        <span className="lh-brand-caption">
+          Trusted by innovative brands worldwide
+        </span>
+        <div
+          className="lh-brand-logos"
+          aria-label="Google, Meta, LinkedIn, HubSpot, Adobe, Shopify, Notion"
+        >
+          <span className="lh-google">Google</span>
+          <span className="lh-meta">
+            <svg
+              viewBox="0 0 40 25"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              aria-hidden="true"
+            >
+              <path d="M3 18C-1 3 8 0 14 8l13 13c10 7 14-6 8-15-5-8-9 0-14 7L13 23C3 28 1 19 3 13" />
+            </svg>
+            Meta
+          </span>
+          <span className="lh-linkedin">
+            Linked<span>in</span>
+          </span>
+          <span className="lh-hubspot">
+            HubSpot
+            <svg
+              viewBox="0 0 25 25"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              aria-hidden="true"
+            >
+              <circle cx="13" cy="12" r="4" />
+              <path d="M13 8V2m3 12 6 5M10 9 4 3" />
+              <circle cx="13" cy="2" r="1.5" />
+              <circle cx="22" cy="20" r="1.5" />
+            </svg>
+          </span>
+          <span className="lh-adobe">
+            <svg viewBox="0 0 25 28" fill="currentColor" aria-hidden="true">
+              <path d="M0 0h9L0 26V0Zm16 0h9v26L16 0Zm-4 13 6 15h-6l-2-5H6l6-10Z" />
+            </svg>
+            Adobe
+          </span>
+          <span className="lh-shopify">
+            <svg viewBox="0 0 25 28" fill="currentColor" aria-hidden="true">
+              <path d="m4 7 15-3 4 22-21-2L4 7Zm4-1C8-1 16-1 16 5h-2c0-4-4-4-4 1H8Z" />
+              <text
+                x="8"
+                y="21"
+                fontSize="14"
+                fontFamily="Georgia"
+                fontWeight="bold"
+                fill="#f0f7fa"
+              >
+                S
+              </text>
+            </svg>
+            Shopify
+          </span>
+          <span className="lh-notion">
+            <b>N</b>Notion
+          </span>
+        </div>
+      </div>
+    </section>
+  );
 }
 export default function LightHome() {
- const story = useRef<HTMLDialogElement>(null);
- return <div className="lh-home"><section className="lh-hero"><div className="lh-hero-photo"><Image src="/images/ispier-light-office.webp" alt="Ispier marketing analytics on a laptop in a bright city office" fill preload sizes="(max-width:700px) 100vw, 66vw" /></div><div className="lh-hero-white" aria-hidden="true" /><div className="lh-wrap lh-hero-content"><div className="lh-hero-copy"><Eyebrow>Digital Marketing Agency</Eyebrow><h1>Turn Clicks into<br /><em>Customers</em></h1><p>We help ambitious brands grow through data-driven digital marketing, creative campaigns and performance strategies that actually deliver.</p><div className="lh-hero-actions"><Link href="/contact" className="lh-button">Get Started <LightArrow /></Link><button className="lh-story-button" onClick={()=>story.current?.showModal()}><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7Z"/></svg></span>Watch Our Story</button></div><div className="lh-trust"><div className="lh-avatar-stack">{[0,1,2,3].map(i=><Avatar key={i} index={i}/>)}</div><p>Trusted by<strong>500+ Brands</strong></p></div></div><span className="lh-handwritten" aria-hidden="true">Strategy<br />Content<br />Performance<br />Growth<i /></span></div></section><BrandStrip />
- <section className="lh-services" id="services"><div className="lh-wrap lh-services-layout"><div className="lh-section-copy"><Eyebrow>Our Services</Eyebrow><h2>End-to-End Digital<br /><em>Marketing Solutions</em></h2><p>From brand awareness to performance marketing, we craft custom strategies that help you reach the right audience and achieve measurable results.</p><Link className="lh-text-link" href="/services">Explore All Services <LightArrow /></Link></div><div className="lh-services-grid">{services.map(service=><Link className={"lh-service-card lh-service-"+service.id} href={"/services#"+service.id} key={service.id}><span className="lh-service-icon"><LightIcon name={service.id}/></span><h3>{service.name}</h3><p>{service.text}</p></Link>)}</div></div></section>
- <section className="lh-case-study" id="case-studies"><div className="lh-case-photo"><Image src="/images/ispier-light-office.webp" alt="Digital marketing strategy and analytics on an office laptop" fill sizes="75vw" /><div className="lh-case-overlay"/><div className="lh-case-copy"><Eyebrow>Featured Case Study</Eyebrow><h2>From Zero to<br />10K+ Monthly Leads</h2><p>How we helped a modern eCommerce brand scale their organic traffic and revenue with a full-funnel digital marketing strategy.</p><Link href="/case-studies" className="lh-text-link">View Case Study <LightArrow /></Link></div><div className="lh-case-metrics"><div><strong>10K+</strong><span>Monthly Leads</span><LightArrow diagonal /></div><div><strong>+320%</strong><span>Organic Traffic Growth</span></div></div></div><div className="lh-case-aside"><h2>More Strategy.<br />More <em>Impact.</em></h2><p>We don&apos;t just run campaigns,<br />we build brands that grow.</p><Link href="/approach" aria-label="Explore our approach"><LightArrow /></Link><div className="lh-petals" aria-hidden="true"><i/><i/><i/></div></div></section>
- <section className="lh-impact"><div className="lh-wrap lh-impact-layout"><div><Eyebrow>Our Impact</Eyebrow><h2>Real Results.<br />Real Growth.</h2><Link href="/case-studies" className="lh-text-link">View More Case Studies <LightArrow /></Link></div><div className="lh-impact-stats">{[["500+","Happy Clients"],["2.5M+","Organic Traffic Generated"],["98%","Client Retention Rate"],["10+","Years of Experience"]].map(([value,label])=><div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div></div></section>
- <section className="lh-process"><div className="lh-wrap lh-process-layout"><div className="lh-section-copy"><Eyebrow>Our Process</Eyebrow><h2>A Simple Process.<br />Powerful Results.</h2><p>We keep things clear, collaborative and focused &mdash; from strategy to success.</p><Link href="/approach" className="lh-text-link">Learn More <LightArrow /></Link></div><ol className="lh-process-steps">{process.map((step,i)=><li key={step.title}><span className="lh-process-icon"><LightIcon name="process"/></span><span className="lh-process-number">0{i+1}</span><h3>{step.title}</h3><p>{step.text}</p>{i<3&&<span className="lh-step-arrow"><LightArrow /></span>}</li>)}</ol></div></section>
- <section className="lh-testimonials"><div className="lh-wrap lh-testimonials-layout"><div className="lh-section-copy"><Eyebrow>Testimonials</Eyebrow><h2>What Our Clients Say</h2><p>Real people. Real results. Here&apos;s what our clients have to say about working with Ispier.</p></div><div className="lh-reviews">{reviews.map(review=><figure className="lh-review" key={review.name}><span className="lh-quote" aria-hidden="true">&#8220;</span><blockquote>&quot;{review.quote}&quot;</blockquote><figcaption><Avatar index={review.avatar}/><div><strong>{review.name}</strong><span>{review.role}</span><small aria-label="5 out of 5 stars">&#9733; &#9733; &#9733; &#9733; &#9733;</small></div></figcaption></figure>)}</div></div></section><MountainCTA />
- <dialog ref={story} className="lh-story-dialog" onClick={event=>{if(event.target===event.currentTarget)story.current?.close();}}><button className="lh-dialog-close" onClick={()=>story.current?.close()} aria-label="Close our story">&times;</button><LightLogo /><Eyebrow>Our Story</Eyebrow><h2>Strategy. Creativity.<br /><em>Meaningful growth.</em></h2><p>We are Ispier. We bring together audience insight, thoughtful creative work and performance marketing to help ambitious brands grow.</p><ol>{process.map(step=><li key={step.title}><strong>{step.title}</strong><p>{step.text}</p></li>)}</ol><Link href="/about" className="lh-button" onClick={()=>story.current?.close()}>Get to Know Us <LightArrow /></Link></dialog>
- </div>;
+  const story = useRef<HTMLDialogElement>(null);
+  return (
+    <div className="lh-home">
+      <section className="lh-hero">
+        <div className="lh-hero-photo">
+          <Image
+            src="/images/ispier-light-office.webp"
+            alt="Ispier marketing analytics on a laptop in a bright city office"
+            fill
+            preload
+            sizes="(max-width:700px) 100vw, 66vw"
+          />
+        </div>
+        <div className="lh-hero-white" aria-hidden="true" />
+        <div className="lh-wrap lh-hero-content">
+          <div className="lh-hero-copy">
+            <Eyebrow>Digital Marketing Agency</Eyebrow>
+            <h1>
+              Turn Clicks into
+              <br />
+              <em>Customers</em>
+            </h1>
+            <p>
+              We help ambitious brands grow through data-driven digital
+              marketing, creative campaigns and performance strategies that
+              actually deliver.
+            </p>
+            <div className="lh-hero-actions">
+              <Link href="/contact" className="lh-button">
+                Get Started <LightArrow />
+              </Link>
+              <button
+                className="lh-story-button"
+                onClick={() => story.current?.showModal()}
+              >
+                <span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="m8 5 12 7-12 7Z" />
+                  </svg>
+                </span>
+                Watch Our Story
+              </button>
+            </div>
+            <div className="lh-trust">
+              <div className="lh-avatar-stack">
+                {[0, 1, 2, 3].map((i) => (
+                  <Avatar key={i} index={i} />
+                ))}
+              </div>
+              <p>
+                Trusted by<strong>500+ Brands</strong>
+              </p>
+            </div>
+          </div>
+          <span className="lh-handwritten" aria-hidden="true">
+            Strategy
+            <br />
+            Content
+            <br />
+            Performance
+            <br />
+            Growth
+            <i />
+          </span>
+        </div>
+      </section>
+      <BrandStrip />
+      <section className="lh-services" id="services">
+        <div className="lh-wrap lh-services-layout">
+          <div className="lh-section-copy">
+            <Eyebrow>Our Services</Eyebrow>
+            <h2>
+              End-to-End Digital
+              <br />
+              <em>Marketing Solutions</em>
+            </h2>
+            <p>
+              From brand awareness to performance marketing, we craft custom
+              strategies that help you reach the right audience and achieve
+              measurable results.
+            </p>
+            <Link className="lh-text-link" href="/services">
+              Explore All Services <LightArrow />
+            </Link>
+          </div>
+          <div className="lh-services-grid">
+            {services.map((service) => (
+              <Link
+                className={"lh-service-card lh-service-" + service.id}
+                href={"/services/" + service.id}
+                key={service.id}
+              >
+                <span className="lh-service-icon">
+                  <LightIcon name={service.id} />
+                </span>
+                <h3>{service.name}</h3>
+                <p>{service.text}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="lh-case-study" id="case-studies">
+        <div className="lh-case-photo">
+          <Image
+            src="/images/ispier-light-office.webp"
+            alt="Digital marketing strategy and analytics on an office laptop"
+            fill
+            sizes="75vw"
+          />
+          <div className="lh-case-overlay" />
+          <div className="lh-case-copy">
+            <Eyebrow>Featured Case Study</Eyebrow>
+            <h2>
+              From Zero to
+              <br />
+              10K+ Monthly Leads
+            </h2>
+            <p>
+              How we helped a modern eCommerce brand scale their organic traffic
+              and revenue with a full-funnel digital marketing strategy.
+            </p>
+            <Link href="/case-studies" className="lh-text-link">
+              View Case Study <LightArrow />
+            </Link>
+          </div>
+          <div className="lh-case-metrics">
+            <div>
+              <strong>10K+</strong>
+              <span>Monthly Leads</span>
+              <LightArrow diagonal />
+            </div>
+            <div>
+              <strong>+320%</strong>
+              <span>Organic Traffic Growth</span>
+            </div>
+          </div>
+        </div>
+        <div className="lh-case-aside">
+          <h2>
+            More Strategy.
+            <br />
+            More <em>Impact.</em>
+          </h2>
+          <p>
+            We don&apos;t just run campaigns,
+            <br />
+            we build brands that grow.
+          </p>
+          <Link href="/approach" aria-label="Explore our approach">
+            <LightArrow />
+          </Link>
+          <div className="lh-petals" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </div>
+        </div>
+      </section>
+      <section className="lh-impact">
+        <div className="lh-wrap lh-impact-layout">
+          <div>
+            <Eyebrow>Our Impact</Eyebrow>
+            <h2>
+              Real Results.
+              <br />
+              Real Growth.
+            </h2>
+            <Link href="/case-studies" className="lh-text-link">
+              View More Case Studies <LightArrow />
+            </Link>
+          </div>
+          <div className="lh-impact-stats">
+            {[
+              ["500+", "Happy Clients"],
+              ["2.5M+", "Organic Traffic Generated"],
+              ["98%", "Client Retention Rate"],
+              ["10+", "Years of Experience"],
+            ].map(([value, label]) => (
+              <div key={label}>
+                <strong>{value}</strong>
+                <span>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="lh-process">
+        <div className="lh-wrap lh-process-layout">
+          <div className="lh-section-copy">
+            <Eyebrow>Our Process</Eyebrow>
+            <h2>
+              A Simple Process.
+              <br />
+              Powerful Results.
+            </h2>
+            <p>
+              We keep things clear, collaborative and focused &mdash; from
+              strategy to success.
+            </p>
+            <Link href="/approach" className="lh-text-link">
+              Learn More <LightArrow />
+            </Link>
+          </div>
+          <ol className="lh-process-steps">
+            {process.map((step, i) => (
+              <li key={step.title}>
+                <span className="lh-process-icon">
+                  <LightIcon name="process" />
+                </span>
+                <span className="lh-process-number">0{i + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+                {i < 3 && (
+                  <span className="lh-step-arrow">
+                    <LightArrow />
+                  </span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+      <section className="lh-testimonials">
+        <div className="lh-wrap lh-testimonials-layout">
+          <div className="lh-section-copy">
+            <Eyebrow>Testimonials</Eyebrow>
+            <h2>What Our Clients Say</h2>
+            <p>
+              Real people. Real results. Here&apos;s what our clients have to
+              say about working with Ispier.
+            </p>
+          </div>
+          <div className="lh-reviews">
+            {reviews.map((review) => (
+              <figure className="lh-review" key={review.name}>
+                <span className="lh-quote" aria-hidden="true">
+                  &#8220;
+                </span>
+                <blockquote>&quot;{review.quote}&quot;</blockquote>
+                <figcaption>
+                  <Avatar index={review.avatar} />
+                  <div>
+                    <strong>{review.name}</strong>
+                    <span>{review.role}</span>
+                    <small aria-label="5 out of 5 stars">
+                      &#9733; &#9733; &#9733; &#9733; &#9733;
+                    </small>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+      <MountainCTA />
+      <dialog
+        ref={story}
+        className="lh-story-dialog"
+        onClick={(event) => {
+          if (event.target === event.currentTarget) story.current?.close();
+        }}
+      >
+        <button
+          className="lh-dialog-close"
+          onClick={() => story.current?.close()}
+          aria-label="Close our story"
+        >
+          &times;
+        </button>
+        <LightLogo />
+        <Eyebrow>Our Story</Eyebrow>
+        <h2>
+          Strategy. Creativity.
+          <br />
+          <em>Meaningful growth.</em>
+        </h2>
+        <p>
+          We are Ispier. We bring together audience insight, thoughtful creative
+          work and performance marketing to help ambitious brands grow.
+        </p>
+        <ol>
+          {process.map((step) => (
+            <li key={step.title}>
+              <strong>{step.title}</strong>
+              <p>{step.text}</p>
+            </li>
+          ))}
+        </ol>
+        <Link
+          href="/about"
+          className="lh-button"
+          onClick={() => story.current?.close()}
+        >
+          Get to Know Us <LightArrow />
+        </Link>
+      </dialog>
+    </div>
+  );
 }

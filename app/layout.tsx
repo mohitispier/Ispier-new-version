@@ -10,8 +10,13 @@ import "./header.css";
 import "./home-extras.css";
 import "./gold-accents.css";
 import "./internal-theme.css";
+import "./blog-article.css";
+import "./service-detail.css";
+import "./home-links.css";
+import "./case-study.css";
 import { Header, Footer } from "./components/site";
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ispier.com"),
   icons: { icon: "/icon.svg" },
   title: {
     default: "Ispier | Digital Marketing Agency - Strategy. Creativity. Growth.",

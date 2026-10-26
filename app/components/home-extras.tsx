@@ -3,14 +3,160 @@ import Link from "next/link";
 import { LightArrow } from "./light-site";
 
 const coreServices = [
- {id:"reddit",title:"Reddit Marketing",text:"Connect with relevant communities through helpful, transparent conversations.",image:"reddit",alt:"A smartphone representing community conversations"},
- {id:"quora",title:"Quora Marketing",text:"Share useful answers that put your expertise in front of the right audience.",image:"quora",alt:"A smartphone representing questions and answers"},
- {id:"wikipedia",title:"Wikipedia Strategy",text:"Build supporting references and explore appropriate, policy-led inclusion.",image:"wikipedia",alt:"An encyclopedia and a laptop on a research desk"},
- {id:"seo",title:"Search Engine Optimisation",text:"Help the right people find you through stronger content and technical foundations.",image:"seo",alt:"A laptop displaying a search performance chart"},
- {id:"social",title:"Social Media Marketing",text:"Bring your brand to life with consistent content and meaningful engagement.",image:"social",alt:"A smartphone displaying a selection of social applications"},
- {id:"web",title:"Website Development",text:"Fast, thoughtful websites built around your brand and your customers.",image:"web",alt:"A laptop displaying a modern website design"},
- {id:"brand",title:"Brand Promotion",text:"Make your brand memorable with a clear story and connected campaigns.",image:"brand",alt:"A workspace with brand design materials and colour swatches"},
+  {
+    id: "reddit",
+    title: "Reddit Marketing",
+    text: "Connect with relevant communities through helpful, transparent conversations.",
+    image: "reddit",
+    alt: "A smartphone representing community conversations",
+  },
+  {
+    id: "quora",
+    title: "Quora Marketing",
+    text: "Share useful answers that put your expertise in front of the right audience.",
+    image: "quora",
+    alt: "A smartphone representing questions and answers",
+  },
+  {
+    id: "wikipedia",
+    title: "Wikipedia Strategy",
+    text: "Build supporting references and explore appropriate, policy-led inclusion.",
+    image: "wikipedia",
+    alt: "An encyclopedia and a laptop on a research desk",
+  },
+  {
+    id: "seo",
+    title: "Search Engine Optimisation",
+    text: "Help the right people find you through stronger content and technical foundations.",
+    image: "seo",
+    alt: "A laptop displaying a search performance chart",
+  },
+  {
+    id: "social",
+    title: "Social Media Marketing",
+    text: "Bring your brand to life with consistent content and meaningful engagement.",
+    image: "social",
+    alt: "A smartphone displaying a selection of social applications",
+  },
+  {
+    id: "web",
+    title: "Website Development",
+    text: "Fast, thoughtful websites built around your brand and your customers.",
+    image: "web",
+    alt: "A laptop displaying a modern website design",
+  },
+  {
+    id: "brand",
+    title: "Brand Promotion",
+    text: "Make your brand memorable with a clear story and connected campaigns.",
+    image: "brand",
+    alt: "A workspace with brand design materials and colour swatches",
+  },
 ];
-export function ExploreServices(){return <section className="ip-core-section" aria-labelledby="ip-core-title"><div className="ref-wrap"><div className="ip-extras-heading"><div><span className="ref-kicker">OUR EXPERTISE</span><h2 id="ip-core-title">Explore Our Services</h2><p>The right mix of strategy, creativity and digital expertise.<br className="ip-desktop-break"/> Find the support that fits your next stage of growth.</p></div><Link className="ip-extras-link" href="/services">View all services <LightArrow/></Link></div><div className="ip-core-grid">{coreServices.map(service=><article className="ip-core-item" key={service.id}><Link className="ip-core-image" href={"/services#"+service.id} tabIndex={-1} aria-hidden="true"><Image src={"/images/services/"+service.image+".webp"} alt={service.alt} width={640} height={640} unoptimized loading="eager"/></Link><div className="ip-core-copy"><h3><Link href={"/services#"+service.id}>{service.title}</Link></h3><p>{service.text}</p><Link className="ip-extras-link" href={"/services#"+service.id} aria-label={"Explore "+service.title}>Learn more <LightArrow/></Link></div></article>)}</div></div></section>}
-const advisors=[{role:"Growth & Strategy",focus:"Direction with purpose",image:1},{role:"Brand & Creative",focus:"Ideas that connect",image:0},{role:"Search & Performance",focus:"Insight into action",image:3},{role:"Content & Community",focus:"Conversations that matter",image:2}];
-export function AdvisorsSection(){return <section className="ip-advisors-section" aria-labelledby="ip-advisors-title"><div className="ref-wrap"><div className="ip-extras-heading"><div><span className="ref-kicker">THE PEOPLE BEHIND THE THINKING</span><h2 id="ip-advisors-title">Meet Our Advisors &amp; Team</h2><p>Different perspectives. One shared ambition.<br className="ip-desktop-break"/> Expertise that brings every part of your brand together.</p></div><Link href="/contact" className="ip-extras-link">Let&apos;s connect <LightArrow/></Link></div><div className="ip-advisors-grid">{advisors.map(advisor=><article className="ip-advisor-card" key={advisor.role}><div className="ip-advisor-photo"><Image src={"/images/team/advisor-"+advisor.image+".webp"} alt="Illustrative professional portrait" fill sizes="(max-width:620px) 42vw, 22vw"/></div><h3>{advisor.role}</h3><p>{advisor.focus}</p></article>)}</div><p className="ip-advisors-note">Illustrative portraits. Individual advisor profiles will be introduced here.</p></div></section>}
+export function ExploreServices() {
+  return (
+    <section className="ip-core-section" aria-labelledby="ip-core-title">
+      <div className="ref-wrap">
+        <div className="ip-extras-heading">
+          <div>
+            <span className="ref-kicker">OUR EXPERTISE</span>
+            <h2 id="ip-core-title"><Link href="/services">Explore Our Services</Link></h2>
+            <p>
+              The right mix of strategy, creativity and digital expertise.
+              <br className="ip-desktop-break" /> Find the support that fits
+              your next stage of growth.
+            </p>
+          </div>
+          <Link className="ip-extras-link" href="/services">
+            View all services <LightArrow />
+          </Link>
+        </div>
+        <div className="ip-core-grid">
+          {coreServices.map((service) => (
+            <article className="ip-core-item" key={service.id}>
+              <Link
+                className="ip-core-image"
+                href={"/services/" + service.id}
+                tabIndex={-1}
+                aria-hidden="true"
+              >
+                <Image
+                  src={"/images/services/" + service.image + ".webp"}
+                  alt={service.alt}
+                  width={640}
+                  height={640}
+                  unoptimized
+                  loading="eager"
+                />
+              </Link>
+              <div className="ip-core-copy">
+                <h3>
+                  <Link href={"/services/" + service.id}>{service.title}</Link>
+                </h3>
+                <p>{service.text}</p>
+                <Link
+                  className="ip-extras-link"
+                  href={"/services/" + service.id}
+                  aria-label={"Explore " + service.title}
+                >
+                  Learn more <LightArrow />
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+const advisors = [
+  { role: "Growth & Strategy", focus: "Direction with purpose", image: 1, href: "/services/digital" },
+  { role: "Brand & Creative", focus: "Ideas that connect", image: 0, href: "/services/brand" },
+  { role: "Search & Performance", focus: "Insight into action", image: 3, href: "/services/seo" },
+  { role: "Content & Community", focus: "Conversations that matter", image: 2, href: "/services/content" },
+];
+export function AdvisorsSection() {
+  return (
+    <section
+      className="ip-advisors-section"
+      aria-labelledby="ip-advisors-title"
+    >
+      <div className="ref-wrap">
+        <div className="ip-extras-heading">
+          <div>
+            <span className="ref-kicker">THE PEOPLE BEHIND THE THINKING</span>
+            <h2 id="ip-advisors-title"><Link href="/about">Meet Our Advisors &amp; Team</Link></h2>
+            <p>
+              Different perspectives. One shared ambition.
+              <br className="ip-desktop-break" /> Expertise that brings every
+              part of your brand together.
+            </p>
+          </div>
+          <Link href="/contact" className="ip-extras-link">
+            Let&apos;s connect <LightArrow />
+          </Link>
+        </div>
+        <div className="ip-advisors-grid">
+          {advisors.map((advisor) => (
+            <Link className="ip-advisor-card" href={advisor.href} key={advisor.role} aria-label={"Explore "+advisor.role}>
+              <div className="ip-advisor-photo">
+                <Image
+                  src={"/images/team/advisor-" + advisor.image + ".webp"}
+                  alt="Illustrative professional portrait"
+                  fill
+                  sizes="(max-width:620px) 42vw, 22vw"
+                />
+              </div>
+              <h3>{advisor.role}</h3>
+              <p>{advisor.focus}</p>
+            </Link>
+          ))}
+        </div>
+        <p className="ip-advisors-note">
+          Illustrative portraits. Individual advisor profiles will be introduced
+          here.
+        </p>
+      </div>
+    </section>
+  );
+}

@@ -105,7 +105,7 @@ export function ServiceCards({ full = false }: { full?: boolean }) {
             </ul>
           )}
           <Link
-            href={full ? "/contact" : "/services#" + s.id}
+            href={full ? "/contact" : "/services/" + s.id}
             className="card-link"
           >
             {full ? "Let’s discuss your project" : "Explore service"}
